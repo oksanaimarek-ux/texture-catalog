@@ -16,8 +16,8 @@ h4{font-size:17px;margin:16px 0 8px;color:#C0C0C0}
 p{margin-bottom:12px;font-size:16px}
 a{color:#FFD700;text-decoration:none}
 a:hover{text-decoration:underline}
-.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0;background:#0A0A0A}
-.cover img{width:100%;max-width:900px;height:auto;display:block}
+.cover{min-height:auto;display:block;background:#0A0A0A}
+.cover img{width:100%;max-width:900px;height:auto;display:block;margin:0 auto}
 .card{background:#141414;border:1px solid #2A2A2A;border-radius:12px;padding:24px;margin-bottom:24px}
 .profile{background:#1A1A1A;border-left:3px solid #FFD700;padding:16px 20px;margin:16px 0;border-radius:0 8px 8px 0}
 .profile-item{margin-bottom:6px;font-size:15px}
@@ -98,10 +98,13 @@ tr:hover{background:rgba(255,215,0,.03)}
 <button class="zoom-btn" onclick="zoomIn()">+</button>
 </div>
 </div>
+
 <section class="cover" id="cover">
-<img src="cover.jpg" alt="Палетка текстур — Обложка">
+<img src="cover.png" alt="Палетка текстур — Обложка каталога">
 </section>
+
 <div class="container">
+
 <section id="intro" class="card">
 <h1>Введение</h1>
 <h3>Как пользоваться этим каталогом</h3>
@@ -113,8 +116,17 @@ tr:hover{background:rgba(255,215,0,.03)}
 <li>Собирать гармоничные цветовые палитры под каждую фактуру</li>
 </ul>
 <h3>Масштаб работы</h3>
-<p>В каталоге использовано <strong>более 280 иллюстрированных примеров</strong>. Каждая из 35 текстур показана в двух вариантах применения, и каждый вариант сгенерирован в четырёх разных нейросетях.</p>
+<p>В каталоге использовано <strong>более 280 иллюстрированных примеров</strong>. Каждая из 35 текстур показана в двух вариантах применения (текстурный фон с надписью и объёмные буквы из текстуры), и каждый вариант сгенерирован в четырёх разных нейросетях для демонстрации вариативности результатов.</p>
+<h3>Что вы найдёте на каждой странице:</h3>
+<ol style="margin-left:24px">
+<li><strong>Профиль</strong> – краткое описание по 5 параметрам (рельеф, блеск, происхождение, масштаб, эмоция)</li>
+<li><strong>Блок А</strong> – текстура на весь фон, нейтральный текст сверху</li>
+<li><strong>Блок Б</strong> – нейтральный фон, буквы выполнены из этой текстуры</li>
+<li><strong>Цветовая палитра</strong> – ключевые цвета с HEX-кодами</li>
+<li><strong>Совет по усилению</strong> – прилагательные для усиления эффекта в промпте</li>
+</ol>
 <h3>О генераторах изображений</h3>
+<p>Все иллюстрации в этом каталоге созданы с помощью четырёх нейросетей. Каждая по-своему интерпретирует промпт, что даёт богатство визуальных решений.</p>
 <div class="table-wrapper">
 <table>
 <tr><th>Генератор</th><th>Русский текст</th><th>Редактирование</th><th>Сильная сторона</th></tr>
@@ -124,7 +136,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <tr><td><strong>QWEN STUDIO</strong></td><td>✅ Отлично</td><td>✅ Да</td><td>Корректная кириллица, редактирование фото-в-фото</td></tr>
 </table>
 </div>
-<div class="tip"><strong>Важно:</strong> Русский текст стабильно корректно генерируется в трёх из четырёх инструментов. WAN AI иногда допускает ошибки в написании кириллицы, однако выдаёт исключительно выразительные дизайны.</div>
+<div class="tip"><strong>Важно:</strong> Русский текст стабильно корректно генерируется в трёх из четырёх инструментов. WAN AI иногда допускает ошибки в написании кириллицы, однако выдаёт исключительно выразительные дизайны. Индустрия развивается стремительно – все генераторы быстро обновляются и всё лучше работают с русским текстом.</div>
 </section>
 
 <section id="toc" class="card">
@@ -201,7 +213,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <section id="t1" class="card">
 <h2>Страница 1 — Глянцевое лаковое покрытие</h2>
 <div class="profile">
-<div class="profile-item"><strong>Рельеф:</strong> гладкий, скользкий</div>
+<div class="profile-item"><strong>Рельеф:</strong> гладкий, скользкий, без выраженных неровностей</div>
 <div class="profile-item"><strong>Блеск:</strong> глянцевый, зеркальный, жирный</div>
 <div class="profile-item"><strong>Происхождение:</strong> синтетический (полимер)</div>
 <div class="profile-item"><strong>Масштаб:</strong> микро</div>
@@ -238,7 +250,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('02-gold-B.jpg')"><img src="02-gold-B.jpg" alt="Золото Б" loading="lazy"></div><div class="img-filename">02-gold-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "ЖИДКОЕ ЗОЛОТО", выполненные из текстуры расплавленного золота с зеркальными потоками и горячими бликами, контрастное освещение подчёркивает текучую металлическую поверхность букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
-<h4> Цветовая палитра</h4>
+<h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-hex">#1A1A1A</div><div class="swatch-name">Чёрный матовый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Классическое золото</div></div>
@@ -263,7 +275,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('03-oil-B.jpg')"><img src="03-oil-B.jpg" alt="Масло Б" loading="lazy"></div><div class="img-filename">03-oil-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на гладком чёрном однотонном фоне крупные объёмные буквы заголовка "МАСЛЯНАЯ ПЛЁНКА", выполненные из текстуры масляной радужной плёнки с текучими переливами, контрастное освещение создаёт эффект глубины и иризации на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
-<h4> Цветовая палитра</h4>
+<h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#0D0D1A"></div><div class="swatch-hex">#0D0D1A</div><div class="swatch-name">Глубокий индиго</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#9370DB"></div><div class="swatch-hex">#9370DB</div><div class="swatch-name">Сиреневый</div></div>
@@ -309,7 +321,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('05-neon-A.jpg')"><img src="05-neon-A.jpg" alt="Неон А" loading="lazy"></div><div class="img-filename">05-neon-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру светящегося неона с яркими полосами и кислотными цветами (розовый, синий, зелёный), макросъёмка свечения, поверх фона в центре крупный контрастный заголовок "НЕОН" простым чёрным однотонным шрифтом, чётким и читаемым, современный дизайн, киберпанк</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру светящегося неона с яркими полосами и кислотными цветами (розовый, синий, зелёный), макросъёмка свечения, поверх фона в центре крупный контрастный заголовок "НЕОН" простым чёрным однотонным шрифтом, чётким и читаемым, современный дизайн, киберпанк</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('05-neon-B.jpg')"><img src="05-neon-B.jpg" alt="Неон Б" loading="lazy"></div><div class="img-filename">05-neon-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "НЕОН", выполненные из текстуры светящихся неоновых трубок с ярким свечением и отражениями на поверхности, тёмный фон усиливает эффект сияния букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -320,7 +332,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#00BFFF"></div><div class="swatch-hex">#00BFFF</div><div class="swatch-name">Электрик-блю</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#39FF14"></div><div class="swatch-hex">#39FF14</div><div class="swatch-name">Неоновый зелёный</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «кислотный свет», «неоновая вспышка», «светящиеся жилы», «футуристический ореол», «битый неон с мерцанием»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «кислотный свет», «неоновая вспышка», «светящиеся жилы», «футуристический ореол», «битый неон с мерцанием»</div>
 </section>
 
 <section id="t6" class="card">
@@ -345,7 +357,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебро</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#F5F5F5"></div><div class="swatch-hex">#F5F5F5</div><div class="swatch-name">Платиновый белый</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «темнеющее серебро», «чешуйчатая патина», «фиолетовые оттенки», «благородная коррозия»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «темнеющее серебро», «чешуйчатая патина», «фиолетовые оттенки», «благородная коррозия»</div>
 </section>
 
 <section id="t7" class="card">
@@ -362,8 +374,8 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру перламутра с мерцающими бежево-розовыми изгибами и мягким блеском, поверх фона в центре крупный контрастный заголовок "ПЕРЛАМУТР" простым тёмно-синим однотонным шрифтом, чётким и читаемым, современный дизайн, морская эстетика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('07-pearl-B.jpg')"><img src="07-pearl-B.jpg" alt="Перламутр Б" loading="lazy"></div><div class="img-filename">07-pearl-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом светло-сером однотонном фоне крупные объёмные буквы заголовка "ПЕРЛАМУТР", выполненные из текстуры перламутра с радужными отливами, мягкое рассеянное освещение подчёркивает игру света в слоях букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
-<h4>🎨 Цветовая палитра</h4>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом светло-сером однотонном фоне крупные объёмные буквы заголовка "ПЕРЛАМУТР", выполненные из текстуры перламутра с радужными отливами, мягкое рассеянное освещение подчёркивает игру света в слоях букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<h4> Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#F0E6E6"></div><div class="swatch-hex">#F0E6E6</div><div class="swatch-name">Жемчужно-розовый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#FFF5EE"></div><div class="swatch-hex">#FFF5EE</div><div class="swatch-name">Телесный</div></div>
@@ -387,8 +399,8 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер со стерильной белой пластиковой поверхностью на фоне, идеально гладкая чистая текстура, лабораторная эстетика, в центре крупный заголовок "СТЕРИЛЬНОСТЬ И ЧИСТОТА", современный дизайн, яркое равномерное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('08-plastic-B.jpg')"><img src="08-plastic-B.jpg" alt="Пластик Б" loading="lazy"></div><div class="img-filename">08-plastic-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на идеально белом стерильном фоне крупные буквы заголовка "СТЕРИЛЬНОСТЬ И ЧИСТОТА", выполненные из гладкого белого пластика с лабораторной эстетикой, равномерное яркое освещение без теней, минималистичная типографика, чистый современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
-<h4>🎨 Цветовая палитра</h4>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на идеально белом стерильном фоне крупные буквы заголовка "СТЕРИЛЬНОСТЬ И ЧИСТОТА", выполненные из гладкого белого пластика с лабораторной эстетикой, равномерное яркое освещение без теней, минималистичная типографика, чистый современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<h4> Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#F8F8FF"></div><div class="swatch-hex">#F8F8FF</div><div class="swatch-name">Призрачный белый</div></div>
@@ -413,14 +425,14 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('09-mica-B.jpg')"><img src="09-mica-B.jpg" alt="Слюда Б" loading="lazy"></div><div class="img-filename">09-mica-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтральном сером однотонном фоне крупные объёмные буквы заголовка "СЛЮДА", выполненные из текстуры слюды с мерцающими чешуйками, контрастное освещение усиливает искрение граней букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
-<h4> Цветовая палитра</h4>
+<h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#808080"></div><div class="swatch-hex">#808080</div><div class="swatch-name">Нейтральный серый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Золотистый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#4B0082"></div><div class="swatch-hex">#4B0082</div><div class="swatch-name">Тёмно-фиолетовый</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «сверкающие хлопья», «золотистые искры», «чешуйчатый блеск», «минеральная пыль»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «сверкающие хлопья», «золотистые искры», «чешуйчатый блеск», «минеральная пыль»</div>
 </section>
 
 <section id="t10" class="card">
@@ -437,7 +449,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру стекловаты с хаотичными блестящими волокнами, мерцающими серебристо-белым, поверх фона в центре крупный контрастный заголовок "СТЕКЛОВАТА" простым тёмно-серым однотонным шрифтом, чётким и читаемым, современный дизайн, техническая фактура</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('10-fiberglass-B.jpg')"><img src="10-fiberglass-B.jpg" alt="Стекловата Б" loading="lazy"></div><div class="img-filename">10-fiberglass-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "СТЕКЛОВАТА", выполненные из текстуры стеклянных волокон с мерцающими нитями, жёсткое боковое освещение создаёт игру бликов на волокнистой поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "СТЕКЛОВАТА", выполненные из текстуры стеклянных волокон с мерцающими нитями, жёсткое боковое освещение создаёт игру бликов на волокнистой поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-hex">#1A1A1A</div><div class="swatch-name">Чёрный</div></div>
@@ -486,7 +498,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('12-velvet-A.jpg')"><img src="12-velvet-A.jpg" alt="Бархат А" loading="lazy"></div><div class="img-filename">12-velvet-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой мягкого бархата на фоне, обволакивающая пушистая поверхность, глубокие тени в складках ткани, в центре крупный заголовок "МЯГКОСТЬ И ОБЪЕМ", современный дизайн, мягкое рассеянное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой мягкого бархата на фоне, обволакивающая пушистая поверхность, глубокие тени в складках ткани, в центре крупный заголовок "МЯГКОСТЬ И ОБЪЕМ", современный дизайн, мягкое рассеянное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('12-velvet-B.jpg')"><img src="12-velvet-B.jpg" alt="Бархат Б" loading="lazy"></div><div class="img-filename">12-velvet-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком темном фоне крупные буквы заголовка "МЯГКОСТЬ И ОБЪЕМ", выполненные из текстуры мягкого бархата с пушистой поверхностью и глубокими складками, рассеянный мягкий свет создает эффект объема и бархатистости, роскошный современный минимализм</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -511,7 +523,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('13-carbon-A.jpg')"><img src="13-carbon-A.jpg" alt="Карбон А" loading="lazy"></div><div class="img-filename">13-carbon-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой карбонового волокна на фоне, геометричный плетеный паттерн, синтетическая техно-поверхность, в центре крупный заголовок "СИНТЕТИКА И ТЕХНО", современный дизайн, холодное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой карбонового волокна на фоне, геометричный плетеный паттерн, синтетическая техно-поверхность, в центре крупный заголовок "СИНТЕТИКА И ТЕХНО", современный дизайн, холодное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('13-carbon-B.jpg')"><img src="13-carbon-B.jpg" alt="Карбон Б" loading="lazy"></div><div class="img-filename">13-carbon-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на темно-сером фоне крупные буквы заголовка "СИНТЕТИКА И ТЕХНО", выполненные из карбонового волокна с геометричным плетеным паттерном, холодное освещение создает четкий контраст между матовыми и блестящими участками букв, футуристичный минимализм</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -540,14 +552,14 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('14-leather-B.jpg')"><img src="14-leather-B.jpg" alt="Кожа Б" loading="lazy"></div><div class="img-filename">14-leather-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом светлом бежевом однотонном фоне крупные объёмные буквы заголовка "НАТУРАЛЬНАЯ КОЖА", выполненные из текстуры выделанной кожи с порами, складками и мягким естественным блеском, тёплое рассеянное освещение подчёркивает рельеф и благородную фактуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
-<h4>🎨 Цветовая палитра</h4>
+<h4> Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#8B6F47"></div><div class="swatch-hex">#8B6F47</div><div class="swatch-name">Тёплый коричневый</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#D2B48C"></div><div class="swatch-hex">#D2B48C</div><div class="swatch-name">Загар</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «жирная кожа», «мелкая шагрень», «тёплый оттенок», «эластичная поверхность»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «жирная кожа», «мелкая шагрень», «тёплый оттенок», «эластичная поверхность»</div>
 </section>
 
 <section id="t15" class="card">
@@ -561,7 +573,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('15-reptile-A.jpg')"><img src="15-reptile-A.jpg" alt="Рептилия А" loading="lazy"></div><div class="img-filename">15-reptile-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру кожи крокодила с чешуйчатым рельефом и глянцевыми пятнами, тёмно-зелёные и коричневые оттенки, поверх фона в центре крупный контрастный заголовок "КОЖА РЕПТИЛИИ" простым золотистым однотонным шрифтом, чётким и читаемым, современный дизайн, экзотика</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру кожи крокодила с чешуйчатым рельефом и глянцевыми пятнами, тёмно-зелёные и коричневые оттенки, поверх фона в центре крупный контрастный заголовок "КОЖА РЕПТИЛИИ" простым золотистым однотонным шрифтом, чётким и читаемым, современный дизайн, экзотика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('15-reptile-B.jpg')"><img src="15-reptile-B.jpg" alt="Рептилия Б" loading="lazy"></div><div class="img-filename">15-reptile-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом песочном однотонном фоне крупные объёмные буквы заголовка "КОЖА РЕПТИЛИИ", выполненные из текстуры крокодиловой кожи с выпуклыми чешуйками, контрастное освещение подчёркивает каждый щиток на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -586,7 +598,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('16-leopard-A.jpg')"><img src="16-leopard-A.jpg" alt="Леопард А" loading="lazy"></div><div class="img-filename">16-leopard-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру меха леопарда с пятнистым ворсом, мягким блеском и объёмными переходами от золотистого до тёмно-коричневого, поверх фона в центре крупный контрастный заголовок "МЕХ ЛЕОПАРДА" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, дикая природа</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру меха леопарда с пятнистым ворсом, мягким блеском и объёмными переходами от золотистого до тёмно-коричневого, поверх фона в центре крупный контрастный заголовок "МЕХ ЛЕОПАРДА" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, дикая природа</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('16-leopard-B.jpg')"><img src="16-leopard-B.jpg" alt="Леопард Б" loading="lazy"></div><div class="img-filename">16-leopard-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом песочном однотонном фоне крупные объёмные буквы заголовка "МЕХ ЛЕОПАРДА", выполненные из текстуры леопардового меха с пятнистым узором и ворсистой поверхностью, мягкое боковое освещение подчёркивает пушистость и объём букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -688,10 +700,10 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('20-wood-A.jpg')"><img src="20-wood-A.jpg" alt="Дерево А" loading="lazy"></div><div class="img-filename">20-wood-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой натурального дерева на фоне, видимые годовые кольца, теплая органическая поверхность, шероховатая необработанная фактура, в центре крупный заголовок "ПРИРОДНАЯ ФАКТУРА", современный дизайн, теплый свет</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой натурального дерева на фоне, видимые годовые кольца, теплая органическая поверхность, шероховатая необработанная фактура, в центре крупный заголовок "ПРИРОДНАЯ ФАКТУРА", современный дизайн, теплый свет</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('20-wood-B.jpg')"><img src="20-wood-B.jpg" alt="Дерево Б" loading="lazy"></div><div class="img-filename">20-wood-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на теплом кремовом фоне крупные буквы заголовка "ПРИРОДНАЯ ФАКТУРА", выполненные из текстуры натурального дерева с годовыми кольцами и шероховатостью, теплый боковой свет подчеркивает органическую структуру букв, уютный современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на теплом кремовом фоне крупные буквы заголовка "ПРИРОДНАЯ ФАКТУРА", выполненные из текстуры натурального дерева с годовыми кольцами и шероховатостью, теплый боковой свет подчеркивает органическую структуру букв, уютный современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#DEB887"></div><div class="swatch-hex">#DEB887</div><div class="swatch-name">Бурый</div></div>
@@ -749,7 +761,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#4682B4"></div><div class="swatch-hex">#4682B4</div><div class="swatch-name">Стальной синий</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «голубой ледник», «хрустальные прожилки», «замёрзшие пузырьки», «ледяная гладь»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «голубой ледник», «хрустальные прожилки», «замёрзшие пузырьки», «ледяная гладь»</div>
 </section>
 
 <section id="t23" class="card">
@@ -849,7 +861,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «крупнопористый», «губчатая масса», «шершавая поверхность», «натуральная губка»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «крупнопористый», «губчатая масса», «шершавая поверхность», «натуральная губка»</div>
 </section>
 
 <div class="section-divider"><span>Раздел 4 · Шероховатые, рельефные, твёрдые</span></div>
@@ -865,7 +877,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('27-asphalt-A.jpg')"><img src="27-asphalt-A.jpg" alt="Асфальт А" loading="lazy"></div><div class="img-filename">27-asphalt-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру мокрого асфальта с отражающими лужами и глубокими тёмно-серыми тонами, поверх фона в центре крупный контрастный заголовок "МОКРЫЙ АСФАЛЬТ" простым светло-голубым однотонным шрифтом, чётким и читаемым, современный дизайн, урбанистика</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру мокрого асфальта с отражающими лужами и глубокими тёмно-серыми тонами, поверх фона в центре крупный контрастный заголовок "МОКРЫЙ АСФАЛЬТ" простым светло-голубым однотонным шрифтом, чётким и читаемым, современный дизайн, урбанистика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('27-asphalt-B.jpg')"><img src="27-asphalt-B.jpg" alt="Асфальт Б" loading="lazy"></div><div class="img-filename">27-asphalt-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом тёмно-сером однотонном фоне крупные объёмные буквы заголовка "МОКРЫЙ АСФАЛЬТ", выполненные из текстуры мокрого асфальта с зеркальными бликами от луж, контрастное освещение создаёт отражения на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -876,7 +888,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#87CEEB"></div><div class="swatch-hex">#87CEEB</div><div class="swatch-name">Светло-голубой</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Почти чёрный</div></div>
 </div>
-<div class="tip"><strong>💡 Совет по усилению:</strong> «гладкий, но с зернистостью», «отражающие лужи», «тёмно-серый с холодным отливом», «городской тротуар»</div>
+<div class="tip"><strong> Совет по усилению:</strong> «гладкий, но с зернистостью», «отражающие лужи», «тёмно-серый с холодным отливом», «городской тротуар»</div>
 </section>
 
 <section id="t28" class="card">
@@ -943,8 +955,8 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру графита с бархатистым металлическим серым отливом, сатиновым блеском и микро-частицами, поверх фона в центре крупный контрастный заголовок "ГРАФИТ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, рисовальная эстетика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('30-graphite-B.jpg')"><img src="30-graphite-B.jpg" alt="Графит Б" loading="lazy"></div><div class="img-filename">30-graphite-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светлом бежевом однотонном фоне крупные объёмные буквы заголовка "ГРАФИТ", выполненные из текстуры грифеля с бархатистой матовой поверхностью и металлическим отливом, мягкое освещение подчёркивает сатиновую фактуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
-<h4> Цветовая палитра</h4>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светлом бежевом однотонном фоне крупные объёмные буквы заголовка "ГРАФИТ", выполненные из текстуры грифеля с бархатистой матовой поверхностью и металлическим отливом, мягкое освещение подчёркивает сатиновую фактуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+<h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#3E3E3E"></div><div class="swatch-hex">#3E3E3E</div><div class="swatch-name">Глубокий графит</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#696969"></div><div class="swatch-hex">#696969</div><div class="swatch-name">Тусклый серый</div></div>
@@ -965,7 +977,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 </div>
 <div class="block-label">Блок А</div>
 <div class="img-block"><div class="img-container" onclick="openModal('31-dirt-A.jpg')"><img src="31-dirt-A.jpg" alt="Грязь А" loading="lazy"></div><div class="img-filename">31-dirt-A.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с грязной уличной текстурой на фоне, подтеки, пыль, царапины, гранж-эстетика, индустриальная атмосфера, в центре крупный заголовок "ГРЯЗЬ И ГРАНЖ", современный дизайн, контрастное жесткое освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер с грязной уличной текстурой на фоне, подтеки, пыль, царапины, гранж-эстетика, индустриальная атмосфера, в центре крупный заголовок "ГРЯЗЬ И ГРАНЖ", современный дизайн, контрастное жесткое освещение</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('31-dirt-B.jpg')"><img src="31-dirt-B.jpg" alt="Грязь Б" loading="lazy"></div><div class="img-filename">31-dirt-B.jpg</div></div>
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на грязно-сером индустриальном фоне (однотонном) крупные буквы заголовка "ГРЯЗЬ И ГРАНЖ", выполненные из фактуры с подтеками, пылью и царапинами, жесткое контрастное освещение подчеркивает рельеф грязи на буквах, брутальный современный дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
@@ -1026,7 +1038,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#F4E4BC"></div><div class="swatch-hex">#F4E4BC</div><div class="swatch-name">Песочный</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «минеральные кольца», «каменная древесина», «окаменевшая кора», «геологическая структура»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «минеральные кольца», «каменная древесина», «окаменевшая кора», «геологическая структура»</div>
 </section>
 
 <section id="t34" class="card">
@@ -1068,7 +1080,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру раскалённой калёной стали с тёмно-серыми и оранжево-красными прожилками, поверх фона в центре крупный контрастный заголовок "КАЛЁНАЯ СТАЛЬ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, индустриальная атмосфера, высокое качество</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
 <div class="block-label">Блок Б</div>
 <div class="img-block"><div class="img-container" onclick="openModal('35-steel-B.jpg')"><img src="35-steel-B.jpg" alt="Сталь Б" loading="lazy"></div><div class="img-filename">35-steel-B.jpg</div></div>
-<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком тёмно-сером однотонном фоне крупные объёмные буквы заголовка "КАЛЁНАЯ СТАЛЬ", выполненные из текстуры раскалённого металла с оранжевыми прожилками и копотью, контрастное освещение подчёркивает раскалённые участки букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+<div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком тёмно-сером однотонном фоне крупные объёмные буквы заголовка "КАЛЁНАЯ СТАЛЬ", выполненные из текстуры раскалённого металла с оранжевыми прожилками и копотью, контрастное освещение подчёркивает раскалённые участки букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
 <h4>🎨 Цветовая палитра</h4>
 <div class="palette">
 <div class="swatch"><div class="swatch-color" style="background:#2F2F2F"></div><div class="swatch-hex">#2F2F2F</div><div class="swatch-name">Тёмно-серый</div></div>
@@ -1076,7 +1088,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div class="swatch"><div class="swatch-color" style="background:#8B0000"></div><div class="swatch-hex">#8B0000</div><div class="swatch-name">Тёмно-красный</div></div>
 <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
 </div>
-<div class="tip"><strong> Совет по усилению:</strong> «раскалённые прожилки», «окалина и копоть», «горячий металл», «кузнечная сталь»</div>
+<div class="tip"><strong>💡 Совет по усилению:</strong> «раскалённые прожилки», «окалина и копоть», «горячий металл», «кузнечная сталь»</div>
 </section>
 
 <div class="section-divider" id="bonus"><span>Бонус-разделы</span></div>
@@ -1109,14 +1121,14 @@ tr:hover{background:rgba(255,215,0,.03)}
 </section>
 
 <section id="b3" class="bonus-card">
-<h3> Культурные ассоциации</h3>
+<h3>🌍 Культурные ассоциации</h3>
 <h4>🇯🇵 Японский стиль (ваби-саби, дзен)</h4>
 <ul><li>Рисовая бумага – тонкая, волокнистая, полупрозрачная</li><li>Бамбук – гладкий, с узлами, тёплый</li><li>Камень сад – отшлифованный, матовый, серый</li><li>Тушь на бумаге – растекающаяся, чёрная, живая</li></ul>
 <h4>🇸🇪 Скандинавский стиль (хюгге, лагом)</h4>
 <ul><li>Светлое дерево (берёза) – тёплое, с мягкими кольцами</li><li>Лён – натуральный, рыхлый, бежевый</li><li>Шерсть (валяная) – плотная, мягкая, серая</li><li>Матовая керамика – гладкая, приглушённая, белая</li></ul>
-<h4>🇹 Итальянский стиль (la dolce vita)</h4>
+<h4>🇮🇹 Итальянский стиль (la dolce vita)</h4>
 <ul><li>Мрамор – холодный, с прожилками, роскошный</li><li>Винтажная кожа – потёртая, тёплая, благородная</li><li>Шёлк – струящийся, блестящий, глубокий</li><li>Травертин – пористый, тёплый, каменный</li></ul>
-<h4>🇸 Американский стиль (индастриал, лофт)</h4>
+<h4>🇺🇸 Американский стиль (индастриал, лофт)</h4>
 <ul><li>Кирпич – шероховатый, красный, с раствором</li><li>Сталь – холодная, с заклёпками, индустриальная</li><li>Состаренное дерево – грубое, с трещинами, тёмное</li><li>Бетон – брутальный, серый, пористый</li></ul>
 <h4>🇲🇦 Марокканский / восточный стиль</h4>
 <ul><li>Мозаика (зелиж) – геометричная, яркая, глазурованная</li><li>Тиснёная кожа – с узором, тёплая, рельефная</li><li>Шёлк с вышивкой – блестящий, с золотыми нитями</li><li>Терракота – матовая, тёплая, пористая</li></ul>
@@ -1124,11 +1136,11 @@ tr:hover{background:rgba(255,215,0,.03)}
 
 <section id="b4" class="bonus-card">
 <h3>📊 Аналитика текстур</h3>
-<h4> СУПЕР-ПОПУЛЯРНЫЕ (23% каталога)</h4>
+<h4>🔥 СУПЕР-ПОПУЛЯРНЫЕ (23% каталога)</h4>
 <p>Используются в 70%+ дизайн-проектов: Бетон, Древесина, Кожа натуральная, Старая бумага, Бархат, Хром, Жидкое золото, Неон</p>
 <h4>⭐ ПОПУЛЯРНЫЕ (29% каталога)</h4>
 <p>Используются в 30-50% проектов: Лёд, Снег, Глина/керамика, Графит, Ржавчина, Медь с патиной, Карбоновое волокно, Кожа рептилии</p>
-<h4>💎 НИШЕВЫЕ (29% каталога)</h4>
+<h4> НИШЕВЫЕ (29% каталога)</h4>
 <p>Используются в 10-25% проектов: Мокрый асфальт, Перламутр, Стерильный пластик, Мох, Сталь калёная, Грязь и пыль, Окаменелое дерево, Коралл/пемза, Слюда</p>
 <h4>🌟 ЭКСКЛЮЗИВНЫЕ (19% каталога)</h4>
 <p>Используются в &lt;10% проектов, но незаменимы: Стекловата, Масляная плёнка на воде, Мыльные пузыри, Тополиный пух, Перья павлина, Паутина, Ржавая сетка</p>
@@ -1168,6 +1180,7 @@ tr:hover{background:rgba(255,215,0,.03)}
 <div style="margin-top:12px;font-style:italic">Автор: Оксана Титаренко · 2026</div>
 <div style="margin-top:8px;font-size:12px">35 текстур · 70 промтов · 280 иллюстраций</div>
 </footer>
+
 </div>
 
 <script>
