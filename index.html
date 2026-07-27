@@ -1,0 +1,1378 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Палетка текстур — Каталог-конструктор | Оксана Титаренко</title>
+<meta name="description" content="35 текстур, 70 промтов, 280 иллюстраций. Каталог-конструктор для дизайнеров и нейросетей.">
+<meta name="author" content="Оксана Титаренко">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--bg2:#1A1A1A;--card:#141414;--text:#F5F5F5;--text2:#C0C0C0;--gold:#FFD700;--gold2:#B8860B;--border:#2A2A2A}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#0A0A0A 0%,#1A1A1A 100%);color:var(--text);line-height:1.6;min-height:100vh;padding-bottom:80px}
+.container{max-width:900px;margin:0 auto;padding:16px}
+h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;color:var(--gold);line-height:1.2}
+h1{font-size:28px;margin-bottom:16px}
+h2{font-size:24px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--gold2)}
+h3{font-size:20px;margin:24px 0 12px;color:var(--text)}
+h4{font-size:17px;margin:16px 0 8px;color:var(--text2)}
+p{margin-bottom:12px;font-size:16px}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Cover */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0A0A0A 0%,#1A1A1A 50%,#0A0A0A 100%);position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(255,215,0,0.08) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(192,192,192,0.05) 0%,transparent 50%)}
+.cover-content{position:relative;z-index:1;max-width:700px}
+.cover-title{font-size:clamp(36px,10vw,72px);font-weight:700;letter-spacing:2px;margin-bottom:20px;text-shadow:0 0 40px rgba(255,215,0,0.3)}
+.cover-subtitle{font-size:clamp(16px,4vw,22px);color:var(--text2);margin-bottom:32px;font-weight:300}
+.cover-info{font-size:clamp(14px,3vw,18px);color:var(--text);margin-bottom:12px;letter-spacing:1px}
+.cover-author{margin-top:40px;font-size:clamp(14px,3vw,18px);color:var(--gold2);font-style:italic}
+.cover-year{font-size:14px;color:var(--text2);margin-top:8px}
+.btn-primary{display:inline-block;margin-top:40px;padding:16px 40px;background:var(--gold);color:#000;font-weight:600;font-size:16px;border:none;border-radius:50px;cursor:pointer;transition:all .3s}
+.btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,215,0,0.3)}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.card-title{color:var(--gold);font-size:22px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+
+/* Profile */
+.profile{background:var(--bg2);border-left:3px solid var(--gold);padding:16px 20px;margin:16px 0;border-radius:0 8px 8px 0}
+.profile-item{margin-bottom:6px;font-size:15px}
+.profile-item strong{color:var(--gold2)}
+
+/* Images */
+.img-block{margin:20px 0;text-align:center}
+.img-container{position:relative;cursor:pointer;overflow:hidden;border-radius:8px;background:var(--bg2);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.img-container img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.img-container:hover img{transform:scale(1.02)}
+.img-container .placeholder{color:var(--text2);font-size:14px;padding:20px;text-align:center}
+.img-filename{margin-top:8px;font-size:12px;color:var(--text2);font-family:'Courier New',monospace;background:var(--bg2);display:inline-block;padding:4px 12px;border-radius:4px}
+.block-label{font-size:14px;color:var(--gold);font-weight:600;margin:16px 0 8px;text-transform:uppercase;letter-spacing:1px}
+
+/* Code blocks */
+.prompt-block{position:relative;margin:12px 0}
+.prompt-code{background:#000;border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'Courier New',Consolas,monospace;font-size:14px;color:var(--text);overflow-x:auto;white-space:pre-wrap;word-wrap:break-word;line-height:1.5}
+.copy-btn{margin-top:8px;padding:12px 20px;background:var(--gold);color:#000;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;min-height:44px;min-width:44px;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.copy-btn:hover{background:#fff}
+.copy-btn.copied{background:#4CAF50;color:#fff}
+
+/* Color palette */
+.palette{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.swatch{flex:1;min-width:100px;text-align:center}
+.swatch-color{width:100%;height:60px;border-radius:8px;border:1px solid var(--border);margin-bottom:6px}
+.swatch-hex{font-family:'Courier New',monospace;font-size:12px;color:var(--gold)}
+.swatch-name{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* Tip */
+.tip{background:rgba(255,215,0,0.05);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:15px}
+.tip strong{color:var(--gold)}
+
+/* Lists */
+ul{margin:12px 0 12px 24px}
+li{margin-bottom:8px;font-size:15px}
+
+/* Table */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg2);color:var(--gold);font-weight:600}
+tr:hover{background:rgba(255,215,0,0.03)}
+
+/* TOC */
+.toc-section{margin-bottom:20px}
+.toc-section-title{color:var(--gold);font-size:18px;margin-bottom:10px;font-weight:600}
+.toc-list{list-style:none;margin:0;padding:0}
+.toc-list li{margin-bottom:6px}
+.toc-list a{color:var(--text);padding:6px 12px;display:block;border-radius:6px;transition:all .2s;font-size:15px}
+.toc-list a:hover{background:var(--bg2);color:var(--gold);text-decoration:none}
+
+/* Modal */
+.modal{display:none;position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.95);overflow:hidden}
+.modal.active{display:flex;align-items:center;justify-content:center}
+.modal-content{max-width:95%;max-height:85vh;transition:transform .2s;cursor:grab;user-select:none}
+.modal-content:active{cursor:grabbing}
+.modal-close{position:fixed;top:16px;right:20px;color:#fff;font-size:40px;cursor:pointer;z-index:10001;width:50px;height:50px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);border-radius:50%;transition:background .2s}
+.modal-close:hover{background:rgba(255,215,0,0.3)}
+.zoom-controls{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:10001;background:rgba(0,0,0,0.7);padding:10px 16px;border-radius:50px;backdrop-filter:blur(10px)}
+.zoom-btn{width:50px;height:50px;border-radius:50%;border:none;background:var(--gold);color:#000;font-size:22px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.zoom-btn:hover{background:#fff;transform:scale(1.1)}
+
+/* Nav */
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:10px 16px;z-index:1000;display:flex;justify-content:space-around;align-items:center}
+.nav-btn{background:none;border:none;color:var(--text2);font-size:12px;cursor:pointer;padding:8px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;transition:color .2s}
+.nav-btn:hover,.nav-btn.active{color:var(--gold)}
+.nav-btn .icon{font-size:20px}
+
+/* Back to top */
+.back-top{position:fixed;bottom:90px;right:16px;width:48px;height:48px;border-radius:50%;background:var(--gold);color:#000;border:none;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:all .3s}
+.back-top.visible{display:flex}
+.back-top:hover{transform:translateY(-3px)}
+
+/* Checkbox */
+.check-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:15px}
+.check-item input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+
+/* Section divider */
+.section-divider{text-align:center;margin:48px 0 32px;position:relative}
+.section-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold2),transparent)}
+.section-divider span{background:var(--bg);padding:0 20px;color:var(--gold);font-size:14px;letter-spacing:2px;text-transform:uppercase;position:relative}
+
+/* Bonus section */
+.bonus-card{background:linear-gradient(135deg,var(--card) 0%,var(--bg2) 100%);border:1px solid var(--gold2);border-radius:12px;padding:24px;margin-bottom:24px}
+.bonus-card h3{color:var(--gold);margin-top:0}
+
+/* Responsive */
+@media(min-width:768px){
+  .nav{top:0;bottom:auto;border-top:none;border-bottom:1px solid var(--border)}
+  body{padding-top:70px;padding-bottom:0}
+  .back-top{bottom:30px}
+  .container{padding:24px}
+  .palette{gap:16px}
+  .swatch{min-width:140px}
+}
+@media(max-width:480px){
+  h1{font-size:24px}
+  h2{font-size:20px}
+  .card{padding:16px}
+  .prompt-code{font-size:13px;padding:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <button class="nav-btn" onclick="scrollToId('cover')"><span class="icon">🏠</span>Обложка</button>
+  <button class="nav-btn" onclick="scrollToId('toc')"><span class="icon">📋</span>Содержание</button>
+  <button class="nav-btn" onclick="scrollToId('section1')"><span class="icon">🎨</span>Текстуры</button>
+  <button class="nav-btn" onclick="scrollToId('bonus')"><span class="icon">⭐</span>Бонусы</button>
+</nav>
+
+<!-- Back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <span class="modal-close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImg" src="" alt="">
+  <div class="zoom-controls">
+    <button class="zoom-btn" onclick="zoomOut()">−</button>
+    <button class="zoom-btn" onclick="resetZoom()" style="font-size:16px">⟲</button>
+    <button class="zoom-btn" onclick="zoomIn()">+</button>
+  </div>
+</div>
+
+<!-- COVER -->
+<section class="cover" id="cover">
+  <div class="cover-content">
+    <div class="cover-title">ПАЛЕТКА<br>ТЕКСТУР</div>
+    <div class="cover-subtitle">Каталог-конструктор для дизайнеров,<br>нейросетей и референсов</div>
+    <div class="cover-info">35 текстур · 70 промтов · 2 формата применения</div>
+    <div class="cover-info" style="font-size:14px;color:var(--text2)">Текстурный фон с надписью + объёмные буквы из текстуры</div>
+    <div class="cover-author">Автор: Оксана Титаренко</div>
+    <div class="cover-year">2026</div>
+    <button class="btn-primary" onclick="scrollToId('intro')">Начать просмотр</button>
+  </div>
+</section>
+
+<div class="container">
+
+<!-- INTRO -->
+<section id="intro" class="card">
+  <h1>Введение</h1>
+  <h3>Как пользоваться этим каталогом</h3>
+  <p>Этот каталог – не просто сборник текстур. Это инструмент, который поможет вам:</p>
+  <ul>
+    <li>Точно описывать текстуры для ТЗ и нейросетей</li>
+    <li>Подбирать референсы, понимая, что именно вы ищете</li>
+    <li>Усиливать или ослаблять эффект текстуры в промптах</li>
+    <li>Собирать гармоничные цветовые палитры под каждую фактуру</li>
+  </ul>
+  <h3>Масштаб работы</h3>
+  <p>В каталоге использовано <strong>более 280 иллюстрированных примеров</strong>. Каждая из 35 текстур показана в двух вариантах применения (текстурный фон с надписью и объёмные буквы из текстуры), и каждый вариант сгенерирован в четырёх разных нейросетях для демонстрации вариативности результатов.</p>
+  <h3>Что вы найдёте на каждой странице:</h3>
+  <ol style="margin-left:24px">
+    <li><strong>Профиль</strong> – краткое описание по 5 параметрам (рельеф, блеск, происхождение, масштаб, эмоция)</li>
+    <li><strong>Блок А</strong> – текстура на весь фон, нейтральный текст сверху</li>
+    <li><strong>Блок Б</strong> – нейтральный фон, буквы выполнены из этой текстуры</li>
+    <li><strong>Цветовая палитра</strong> – ключевые цвета с HEX-кодами</li>
+    <li><strong>Совет по усилению</strong> – прилагательные для усиления эффекта в промпте</li>
+  </ol>
+  <h3>О генераторах изображений</h3>
+  <p>Все иллюстрации в этом каталоге созданы с помощью четырёх нейросетей. Каждая по-своему интерпретирует промпт, что даёт богатство визуальных решений.</p>
+  <table>
+    <tr><th>Генератор</th><th>Русский текст</th><th>Редактирование</th><th>Сильная сторона</th></tr>
+    <tr><td><strong>ШЕДЕВРУМ</strong></td><td>✅ Хорошо</td><td>❌ Нет</td><td>100% безлимитная генерация, иногда неожиданно великолепные результаты</td></tr>
+    <tr><td><strong>GPT IMAGE</strong></td><td>✅ Отлично</td><td>✅ Да</td><td>Точное следование промпту, редактирование</td></tr>
+    <tr><td><strong>WAN AI</strong></td><td>⚠️ Иногда ошибки</td><td>✅ Да</td><td>Самый выразительный дизайн, эстетика</td></tr>
+    <tr><td><strong>QWEN STUDIO</strong></td><td>✅ Отлично</td><td>✅ Да</td><td>Корректная кириллица, редактирование фото-в-фото</td></tr>
+  </table>
+  <div class="tip"><strong>Важно:</strong> Русский текст стабильно корректно генерируется в трёх из четырёх инструментов. WAN AI иногда допускает ошибки в написании кириллицы, однако выдаёт исключительно выразительные дизайны. Индустрия развивается стремительно – все генераторы быстро обновляются и всё лучше работают с русским текстом.</div>
+</section>
+
+<!-- TOC -->
+<section id="toc" class="card">
+  <h1>Содержание</h1>
+  <div class="toc-section">
+    <div class="toc-section-title">Раздел 1. Гладкие, зеркальные, скользкие</div>
+    <ul class="toc-list">
+      <li><a href="#t1">1. Глянцевое лаковое покрытие</a></li>
+      <li><a href="#t2">2. Жидкое золото</a></li>
+      <li><a href="#t3">3. Масляная плёнка на воде</a></li>
+      <li><a href="#t4">4. Мыльные пузыри</a></li>
+      <li><a href="#t5">5. Светящийся неон</a></li>
+      <li><a href="#t6">6. Оксидированное серебро</a></li>
+      <li><a href="#t7">7. Перламутр</a></li>
+      <li><a href="#t8">8. Стерильный белый пластик</a></li>
+      <li><a href="#t9">9. Слюда</a></li>
+      <li><a href="#t10">10. Стекловата</a></li>
+      <li><a href="#t11">11. Хром</a></li>
+    </ul>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Раздел 2. Мягкие, пушистые, ворсистые</div>
+    <ul class="toc-list">
+      <li><a href="#t12">12. Бархат</a></li>
+      <li><a href="#t13">13. Карбоновое волокно</a></li>
+      <li><a href="#t14">14. Натуральная выделанная кожа</a></li>
+      <li><a href="#t15">15. Кожа рептилии</a></li>
+      <li><a href="#t16">16. Мех леопарда</a></li>
+      <li><a href="#t17">17. Птичьи перья (павлин)</a></li>
+      <li><a href="#t18">18. Тополиный пух</a></li>
+    </ul>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Раздел 3. Пористые, губчатые, воздушные</div>
+    <ul class="toc-list">
+      <li><a href="#t19">19. Старая выцветшая бумага</a></li>
+      <li><a href="#t20">20. Древесина</a></li>
+      <li><a href="#t21">21. Коралл / пемза</a></li>
+      <li><a href="#t22">22. Лёд</a></li>
+      <li><a href="#t23">23. Мох</a></li>
+      <li><a href="#t24">24. Паутина</a></li>
+      <li><a href="#t25">25. Сугроб (снег)</a></li>
+      <li><a href="#t26">26. Сухая губка</a></li>
+    </ul>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Раздел 4. Шероховатые, рельефные, твёрдые</div>
+    <ul class="toc-list">
+      <li><a href="#t27">27. Мокрый асфальт</a></li>
+      <li><a href="#t28">28. Бетон</a></li>
+      <li><a href="#t29">29. Обожжённая глина с кракелюром</a></li>
+      <li><a href="#t30">30. Графит</a></li>
+      <li><a href="#t31">31. Грязь и уличная пыль</a></li>
+      <li><a href="#t32">32. Старая медь с патиной</a></li>
+      <li><a href="#t33">33. Окаменелое дерево</a></li>
+      <li><a href="#t34">34. Ржавая сетка</a></li>
+      <li><a href="#t35">35. Раскалённая сталь</a></li>
+    </ul>
+  </div>
+  <div class="toc-section">
+    <div class="toc-section-title">Бонус-разделы</div>
+    <ul class="toc-list">
+      <li><a href="#b1">Комбинирование текстур</a></li>
+      <li><a href="#b2">Сезонные текстуры</a></li>
+      <li><a href="#b3">Культурные ассоциации</a></li>
+      <li><a href="#b4">Аналитика текстур</a></li>
+      <li><a href="#b5">Чек-лист проверки промпта</a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="section-divider"><span>Раздел 1 · Гладкие, зеркальные, скользкие</span></div>
+
+<!-- TEXTURES 1-11 -->
+<section id="t1" class="card">
+  <h2>Страница 1 — Глянцевое лаковое покрытие</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, скользкий, без выраженных неровностей</div>
+    <div class="profile-item"><strong>Блеск:</strong> глянцевый, зеркальный, жирный</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (полимер)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (мельчайшие царапины, идеально ровно)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> стерильный, роскошный, современный</div>
+  </div>
+  <div class="block-label">Блок А — Фон текстурный</div>
+  <div class="img-block">
+    <div class="img-container" onclick="openModal('01-gloss-A.jpg')">
+      <img src="01-gloss-A.jpg" alt="Глянцевое лаковое покрытие — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 01-gloss-A.jpg</div>'">
+    </div>
+    <div class="img-filename">01-gloss-A.jpg</div>
+  </div>
+  <div class="prompt-block">
+    <pre class="prompt-code">Минималистичный постер с глянцевой лаковой поверхностью на фоне, жирный блеск пластика, четкие отражения света, гладкая скользящая текстура, в центре крупный заголовок "ГЛЯНЕЦ И БЛЕСК", современный дизайн, студийное освещение с яркими бликами</pre>
+    <button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button>
+  </div>
+  <div class="block-label">Блок Б — Буквы текстурные</div>
+  <div class="img-block">
+    <div class="img-container" onclick="openModal('01-gloss-B.jpg')">
+      <img src="01-gloss-B.jpg" alt="Глянцевое лаковое покрытие — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 01-gloss-B.jpg</div>'">
+    </div>
+    <div class="img-filename">01-gloss-B.jpg</div>
+  </div>
+  <div class="prompt-block">
+    <pre class="prompt-code">Минималистичный постер, на гладком черном фоне крупные глянцевые буквы заголовка "ГЛЯНЕЦ И БЛЕСК", выполненные из лакового пластика с жирными бликами и четкими отражениями, студийный свет создает яркие зеркальные переливы на поверхности букв, минималистичная композиция, современный дизайн</pre>
+    <button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button>
+  </div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Глубокий чёрный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5F5F5"></div><div class="swatch-hex">#F5F5F5</div><div class="swatch-name">Чистый белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Золотой</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «зеркально-гладкий», «хрустальный», «слепящие блики», «лаковый финиш»</div>
+</section>
+
+<section id="t2" class="card">
+  <h2>Страница 2 — Жидкое золото</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> текучий, волнообразный, без чётких границ</div>
+    <div class="profile-item"><strong>Блеск:</strong> зеркальный, горячий, жёлто-оранжевый отлив</div>
+    <div class="profile-item"><strong>Происхождение:</strong> металлическое, расплавленное</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (крупные потоки и капли)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> роскошный, дорогой, мощный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('02-gold-A.jpg')"><img src="02-gold-A.jpg" alt="Жидкое золото — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 02-gold-A.jpg</div>'"></div><div class="img-filename">02-gold-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру жидкого золота с текучими зеркальными потоками и горячими жёлто-оранжевыми оттенками, поверх фона в центре крупный контрастный заголовок "ЖИДКОЕ ЗОЛОТО" простым чёрным однотонным шрифтом, чётким и читаемым, современный дизайн, роскошь</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('02-gold-B.jpg')"><img src="02-gold-B.jpg" alt="Жидкое золото — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 02-gold-B.jpg</div>'"></div><div class="img-filename">02-gold-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "ЖИДКОЕ ЗОЛОТО", выполненные из текстуры расплавленного золота с зеркальными потоками и горячими бликами, контрастное освещение подчёркивает текучую металлическую поверхность букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-hex">#1A1A1A</div><div class="swatch-name">Чёрный матовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Классическое золото</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF8C00"></div><div class="swatch-hex">#FF8C00</div><div class="swatch-name">Раскалённый оранжевый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF8DC"></div><div class="swatch-hex">#FFF8DC</div><div class="swatch-name">Светлая пена</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «раскалённое золото», «текучее зеркало», «оранжевые прожилки», «жидкий металл»</div>
+</section>
+
+<section id="t3" class="card">
+  <h2>Страница 3 — Масляная плёнка на воде</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, но с текучими волнами</div>
+    <div class="profile-item"><strong>Блеск:</strong> иризирующий, переливчатый, радужный</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (нефтепродукты)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (крупные разводы)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> абстрактный, химический, загадочный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('03-oil-A.jpg')"><img src="03-oil-A.jpg" alt="Масляная плёнка — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 03-oil-A.jpg</div>'"></div><div class="img-filename">03-oil-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру масляной плёнки на воде с радужными иризациями и переливами от сиреневого до золотого, поверх фона в центре крупный контрастный заголовок "МАСЛЯНАЯ ПЛЁНКА" простым чёрным однотонным шрифтом, чётким и читаемым, современный дизайн, абстрактная химия</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('03-oil-B.jpg')"><img src="03-oil-B.jpg" alt="Масляная плёнка — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 03-oil-B.jpg</div>'"></div><div class="img-filename">03-oil-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на гладком чёрном однотонном фоне крупные объёмные буквы заголовка "МАСЛЯНАЯ ПЛЁНКА", выполненные из текстуры масляной радужной плёнки с текучими переливами, контрастное освещение создаёт эффект глубины и иризации на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0D0D1A"></div><div class="swatch-hex">#0D0D1A</div><div class="swatch-name">Глубокий индиго</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#9370DB"></div><div class="swatch-hex">#9370DB</div><div class="swatch-name">Сиреневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Золотой</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#00CED1"></div><div class="swatch-hex">#00CED1</div><div class="swatch-name">Бирюзовый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «неоновые переливы», «гладкая радуга», «нефтяная гладь», «голографический»</div>
+</section>
+
+<section id="t4" class="card">
+  <h2>Страница 4 — Мыльные пузыри</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> тонкая сферическая плёнка, гладкая</div>
+    <div class="profile-item"><strong>Блеск:</strong> прозрачный, радужный, с бликами</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (ПАВ)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (крупные пузыри с отражениями)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> эфемерный, детский, воздушный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('04-bubbles-A.jpg')"><img src="04-bubbles-A.jpg" alt="Мыльные пузыри — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 04-bubbles-A.jpg</div>'"></div><div class="img-filename">04-bubbles-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру мыльных пузырей с тончайшей переливчатой радужной плёнкой, бликами и отражениями окружения, поверх фона в центре крупный контрастный заголовок "МЫЛЬНЫЕ ПУЗЫРИ" простым тёмно-синим однотонным шрифтом, чётким и читаемым, современный дизайн, эфемерная красота</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('04-bubbles-B.jpg')"><img src="04-bubbles-B.jpg" alt="Мыльные пузыри — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 04-bubbles-B.jpg</div>'"></div><div class="img-filename">04-bubbles-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на гладком чёрном однотонном фоне крупные объёмные буквы заголовка "МЫЛЬНЫЕ ПУЗЫРИ", выполненные из текстуры мыльных пузырей с иризирующими переливами и зеркальными отражениями, мягкое рассеянное освещение создаёт иллюзию прозрачности и радужных бликов на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0A1628"></div><div class="swatch-hex">#0A1628</div><div class="swatch-name">Тёмно-синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E0F7FF"></div><div class="swatch-hex">#E0F7FF</div><div class="swatch-name">Ледяной белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFB6C1"></div><div class="swatch-hex">#FFB6C1</div><div class="swatch-name">Нежно-розовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#98FB98"></div><div class="swatch-hex">#98FB98</div><div class="swatch-name">Бледно-зелёный</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «перламутровая плёнка», «хрупкая радуга», «пузырчатое стекло», «сферические отражения»</div>
+</section>
+
+<section id="t5" class="card">
+  <h2>Страница 5 — Светящийся неон</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, трубчатый, с чёткими краями</div>
+    <div class="profile-item"><strong>Блеск:</strong> светящийся, кислотный, с ореолом</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (газоразрядные трубки)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видимые трубки и свечение)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> киберпанк, яркий, энергичный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('05-neon-A.jpg')"><img src="05-neon-A.jpg" alt="Неон — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 05-neon-A.jpg</div>'"></div><div class="img-filename">05-neon-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру светящегося неона с яркими полосами и кислотными цветами (розовый, синий, зелёный), макросъёмка свечения, поверх фона в центре крупный контрастный заголовок "НЕОН" простым чёрным однотонным шрифтом, чётким и читаемым, современный дизайн, киберпанк</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('05-neon-B.jpg')"><img src="05-neon-B.jpg" alt="Неон — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 05-neon-B.jpg</div>'"></div><div class="img-filename">05-neon-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "НЕОН", выполненные из текстуры светящихся неоновых трубок с ярким свечением и отражениями на поверхности, тёмный фон усиливает эффект сияния букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Чёрный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF1493"></div><div class="swatch-hex">#FF1493</div><div class="swatch-name">Кислотный розовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#00BFFF"></div><div class="swatch-hex">#00BFFF</div><div class="swatch-name">Электрик-блю</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#39FF14"></div><div class="swatch-hex">#39FF14</div><div class="swatch-name">Неоновый зелёный</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «кислотный свет», «неоновая вспышка», «светящиеся жилы», «футуристический ореол», «битый неон с мерцанием»</div>
+</section>
+
+<section id="t6" class="card">
+  <h2>Страница 6 — Оксидированное серебро</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, но с тёмными прожилками и лёгкой шероховатостью от окисления</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с мерцающими вкраплениями</div>
+    <div class="profile-item"><strong>Происхождение:</strong> металлическое, с патиной</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (мелкие узоры окисления)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> благородный, винтажный, мистический</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('06-silver-A.jpg')"><img src="06-silver-A.jpg" alt="Оксидированное серебро — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 06-silver-A.jpg</div>'"></div><div class="img-filename">06-silver-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру оксидированного серебра с глубоким тёмно-фиолетово-серым оттенком и мерцающими вкраплениями, поверх фона в центре крупный контрастный заголовок "ЧЕРНЁНОЕ СЕРЕБРО" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, ювелирная патина</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('06-silver-B.jpg')"><img src="06-silver-B.jpg" alt="Оксидированное серебро — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 06-silver-B.jpg</div>'"></div><div class="img-filename">06-silver-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светлом серебристо-сером однотонном фоне крупные объёмные буквы заголовка "ЧЕРНЁНОЕ СЕРЕБРО", выполненные из текстуры оксидированного серебра с тёмными прожилками и мерцающими частицами, мягкое освещение подчёркивает благородную глубину букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#2F2F3F"></div><div class="swatch-hex">#2F2F3F</div><div class="swatch-name">Тёмный графит</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B6B8D"></div><div class="swatch-hex">#6B6B8D</div><div class="swatch-name">Серо-фиолетовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебро</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5F5F5"></div><div class="swatch-hex">#F5F5F5</div><div class="swatch-name">Платиновый белый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «темнеющее серебро», «чешуйчатая патина», «фиолетовые оттенки», «благородная коррозия»</div>
+</section>
+
+<section id="t7" class="card">
+  <h2>Страница 7 — Перламутр</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, слоистый, с переливами</div>
+    <div class="profile-item"><strong>Блеск:</strong> мерцающий, радужный, мягкий</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (моллюски)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны слои)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> нежный, дорогой, морской</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('07-pearl-A.jpg')"><img src="07-pearl-A.jpg" alt="Перламутр — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 07-pearl-A.jpg</div>'"></div><div class="img-filename">07-pearl-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру перламутра с мерцающими бежево-розовыми изгибами и мягким блеском, поверх фона в центре крупный контрастный заголовок "ПЕРЛАМУТР" простым тёмно-синим однотонным шрифтом, чётким и читаемым, современный дизайн, морская эстетика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('07-pearl-B.jpg')"><img src="07-pearl-B.jpg" alt="Перламутр — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 07-pearl-B.jpg</div>'"></div><div class="img-filename">07-pearl-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом светло-сером однотонном фоне крупные объёмные буквы заголовка "ПЕРЛАМУТР", выполненные из текстуры перламутра с радужными отливами, мягкое рассеянное освещение подчёркивает игру света в слоях букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#F0E6E6"></div><div class="swatch-hex">#F0E6E6</div><div class="swatch-name">Жемчужно-розовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF5EE"></div><div class="swatch-hex">#FFF5EE</div><div class="swatch-name">Телесный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E6E6FA"></div><div class="swatch-hex">#E6E6FA</div><div class="swatch-name">Лавандовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B0C4DE"></div><div class="swatch-hex">#B0C4DE</div><div class="swatch-name">Светло-стальной</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «радужная эмаль», «жемчужная гладь», «искрящийся слой», «морской шелк»</div>
+</section>
+
+<section id="t8" class="card">
+  <h2>Страница 8 — Стерильный белый пластик</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> идеально гладкий, без дефектов</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый или слегка глянцевый, без бликов</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (полимер)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (абсолютная ровность)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> стерильный, лабораторный, холодный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('08-plastic-A.jpg')"><img src="08-plastic-A.jpg" alt="Стерильный пластик — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 08-plastic-A.jpg</div>'"></div><div class="img-filename">08-plastic-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер со стерильной белой пластиковой поверхностью на фоне, идеально гладкая чистая текстура, лабораторная эстетика, в центре крупный заголовок "СТЕРИЛЬНОСТЬ И ЧИСТОТА", современный дизайн, яркое равномерное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('08-plastic-B.jpg')"><img src="08-plastic-B.jpg" alt="Стерильный пластик — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 08-plastic-B.jpg</div>'"></div><div class="img-filename">08-plastic-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на идеально белом стерильном фоне крупные буквы заголовка "СТЕРИЛЬНОСТЬ И ЧИСТОТА", выполненные из гладкого белого пластика с лабораторной эстетикой, равномерное яркое освещение без теней, минималистичная типографика, чистый современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F8FF"></div><div class="swatch-hex">#F8F8FF</div><div class="swatch-name">Призрачный белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8E8E8"></div><div class="swatch-hex">#E8E8E8</div><div class="swatch-name">Светло-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B0C4DE"></div><div class="swatch-hex">#B0C4DE</div><div class="swatch-name">Холодный стальной</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «медицинский пластик», «антибактериальная поверхность», «беспыльный», «холодный белый»</div>
+</section>
+
+<section id="t9" class="card">
+  <h2>Страница 9 — Слюда</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> слоистый, чешуйчатый, с лёгкой текстурой</div>
+    <div class="profile-item"><strong>Блеск:</strong> мерцающий, искрящийся, с металлическим отливом</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный минерал</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (мелкие чешуйки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> искрящийся, драгоценный, натуральный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('09-mica-A.jpg')"><img src="09-mica-A.jpg" alt="Слюда — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 09-mica-A.jpg</div>'"></div><div class="img-filename">09-mica-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру слюды со слоистыми чешуйками и перламутровыми искрами, переливающейся от серебристого до золотистого, поверх фона в центре крупный контрастный заголовок "СЛЮДА" простым тёмно-фиолетовым однотонным шрифтом, чётким и читаемым, современный дизайн, минеральный блеск</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('09-mica-B.jpg')"><img src="09-mica-B.jpg" alt="Слюда — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 09-mica-B.jpg</div>'"></div><div class="img-filename">09-mica-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтральном сером однотонном фоне крупные объёмные буквы заголовка "СЛЮДА", выполненные из текстуры слюды с мерцающими чешуйками, контрастное освещение усиливает искрение граней букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#808080"></div><div class="swatch-hex">#808080</div><div class="swatch-name">Нейтральный серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Золотистый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4B0082"></div><div class="swatch-hex">#4B0082</div><div class="swatch-name">Тёмно-фиолетовый</div></div>
+  </div>
+  <div class="tip"><strong> Совет по усилению:</strong> «сверкающие хлопья», «золотистые искры», «чешуйчатый блеск», «минеральная пыль»</div>
+</section>
+
+<section id="t10" class="card">
+  <h2>Страница 10 — Стекловата</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> волокнистый, хаотичный, с торчащими нитями</div>
+    <div class="profile-item"><strong>Блеск:</strong> мерцающий, серебристый, с бликами на волокнах</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (стекловолокно)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны отдельные волокна)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> технический, индустриальный, холодный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('10-fiberglass-A.jpg')"><img src="10-fiberglass-A.jpg" alt="Стекловата — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 10-fiberglass-A.jpg</div>'"></div><div class="img-filename">10-fiberglass-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру стекловаты с хаотичными блестящими волокнами, мерцающими серебристо-белым, поверх фона в центре крупный контрастный заголовок "СТЕКЛОВАТА" простым тёмно-серым однотонным шрифтом, чётким и читаемым, современный дизайн, техническая фактура</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('10-fiberglass-B.jpg')"><img src="10-fiberglass-B.jpg" alt="Стекловата — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 10-fiberglass-B.jpg</div>'"></div><div class="img-filename">10-fiberglass-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "СТЕКЛОВАТА", выполненные из текстуры стеклянных волокон с мерцающими нитями, жёсткое боковое освещение создаёт игру бликов на волокнистой поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-hex">#1A1A1A</div><div class="swatch-name">Чёрный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8E8E8"></div><div class="swatch-hex">#E8E8E8</div><div class="swatch-name">Серебристо-белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#A9A9A9"></div><div class="swatch-hex">#A9A9A9</div><div class="swatch-name">Тёмно-серебристый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4682B4"></div><div class="swatch-hex">#4682B4</div><div class="swatch-name">Стальной синий</div></div>
+  </div>
+  <div class="tip"><strong> Совет по усилению:</strong> «спутанные стеклянные нити», «мерцающая вата», «острые волокна», «изоляционная текстура»</div>
+</section>
+
+<section id="t11" class="card">
+  <h2>Страница 11 — Хром</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, зеркальный, с идеальной полировкой</div>
+    <div class="profile-item"><strong>Блеск:</strong> зеркальный, холодный, с жёсткими отражениями</div>
+    <div class="profile-item"><strong>Происхождение:</strong> металлическое (никелевое покрытие)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (без дефектов)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> футуристичный, холодный, премиальный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('11-chrome-A.jpg')"><img src="11-chrome-A.jpg" alt="Хром — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 11-chrome-A.jpg</div>'"></div><div class="img-filename">11-chrome-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с хромированной зеркальной поверхностью на фоне, полированный металл с жесткими отражениями, холодный стальной блеск, в центре крупный заголовок "ЗЕРКАЛО И ХРОМ", современный дизайн, контрастное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('11-chrome-B.jpg')"><img src="11-chrome-B.jpg" alt="Хром — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 11-chrome-B.jpg</div>'"></div><div class="img-filename">11-chrome-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтрально-сером фоне крупные зеркальные буквы заголовка "ЗЕРКАЛО И ХРОМ", выполненные из полированного хрома с холодным стальным блеском и жесткими отражениями, контрастное освещение подчеркивает металлическую фактуру букв, строгий современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#808080"></div><div class="swatch-hex">#808080</div><div class="swatch-name">Нейтральный серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8E8E8"></div><div class="swatch-hex">#E8E8E8</div><div class="swatch-name">Светлый хром</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2F4F4F"></div><div class="swatch-hex">#2F4F4F</div><div class="swatch-name">Тёмный грифель</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Классическое серебро</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «зеркальная полировка», «холодный блеск», «стальное зеркало», «без единой царапины»</div>
+</section>
+
+<div class="section-divider"><span>Раздел 2 · Мягкие, пушистые, ворсистые</span></div>
+
+<section id="t12" class="card">
+  <h2>Страница 12 — Бархат</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> ворсистый, с мягким ворсом, объёмный</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с глубокими тенями в складках</div>
+    <div class="profile-item"><strong>Происхождение:</strong> текстильный (ткань)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны ворсинки и складки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> роскошный, уютный, обволакивающий</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('12-velvet-A.jpg')"><img src="12-velvet-A.jpg" alt="Бархат — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 12-velvet-A.jpg</div>'"></div><div class="img-filename">12-velvet-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой мягкого бархата на фоне, обволакивающая пушистая поверхность, глубокие тени в складках ткани, в центре крупный заголовок "МЯГКОСТЬ И ОБЪЕМ", современный дизайн, мягкое рассеянное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('12-velvet-B.jpg')"><img src="12-velvet-B.jpg" alt="Бархат — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 12-velvet-B.jpg</div>'"></div><div class="img-filename">12-velvet-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком темном фоне (например, антрацитовом) крупные буквы заголовка "МЯГКОСТЬ И ОБЪЕМ", выполненные из текстуры мягкого бархата с пушистой поверхностью и глубокими складками, рассеянный мягкий свет создает эффект объема и бархатистости, роскошный современный минимализм</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#2F1B2E"></div><div class="swatch-hex">#2F1B2E</div><div class="swatch-name">Глубокий бордовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4A2040"></div><div class="swatch-hex">#4A2040</div><div class="swatch-name">Тёмный пурпур</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1C1C1C"></div><div class="swatch-hex">#1C1C1C</div><div class="swatch-name">Антрацит</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B6F6F"></div><div class="swatch-hex">#8B6F6F</div><div class="swatch-name">Приглушённый розовый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «королевский бархат», «густой ворс», «тёмные складки», «плюшевая поверхность»</div>
+</section>
+
+<section id="t13" class="card">
+  <h2>Страница 13 — Карбоновое волокно</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> плетёный, с геометрическим узором, жёсткий</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с лёгким блеском на переплетениях</div>
+    <div class="profile-item"><strong>Происхождение:</strong> синтетический (композит)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны нити и переплетения)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> технологичный, спортивный, высокотехнологичный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('13-carbon-A.jpg')"><img src="13-carbon-A.jpg" alt="Карбон — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 13-carbon-A.jpg</div>'"></div><div class="img-filename">13-carbon-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой карбонового волокна на фоне, геометричный плетеный паттерн, синтетическая техно-поверхность, в центре крупный заголовок "СИНТЕТИКА И ТЕХНО", современный дизайн, холодное освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('13-carbon-B.jpg')"><img src="13-carbon-B.jpg" alt="Карбон — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 13-carbon-B.jpg</div>'"></div><div class="img-filename">13-carbon-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на темно-сером фоне крупные буквы заголовка "СИНТЕТИКА И ТЕХНО", выполненные из карбонового волокна с геометричным плетеным паттерном, холодное освещение создает четкий контраст между матовыми и блестящими участками букв, футуристичный минимализм</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#1A1A1A"></div><div class="swatch-hex">#1A1A1A</div><div class="swatch-name">Чёрный карбон</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2C2C2C"></div><div class="swatch-hex">#2C2C2C</div><div class="swatch-name">Тёмно-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#404040"></div><div class="swatch-hex">#404040</div><div class="swatch-name">Графит</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#00BFFF"></div><div class="swatch-hex">#00BFFF</div><div class="swatch-name">Электрик</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «плетёная сетка», «матовые нити», «геометрическое плетение», «гоночный карбон»</div>
+</section>
+
+<section id="t14" class="card">
+  <h2>Страница 14 — Натуральная выделанная кожа</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> с порами, складками, неровный</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с мягким естественным блеском</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (животное)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны поры и фактура)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> благородный, тёплый, дорогой</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('14-leather-A.jpg')"><img src="14-leather-A.jpg" alt="Кожа — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 14-leather-A.jpg</div>'"></div><div class="img-filename">14-leather-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру натуральной выделанной кожи с видимыми порами, неровным рельефом, естественными складками и лёгкой зернистостью, тёплые коричневые и бежевые оттенки, поверх фона в центре крупный контрастный заголовок "НАТУРАЛЬНАЯ КОЖА" простым белым или светло-бежевым однотонным шрифтом, чётким и читаемым, современный дизайн, тактильная роскошь</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('14-leather-B.jpg')"><img src="14-leather-B.jpg" alt="Кожа — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 14-leather-B.jpg</div>'"></div><div class="img-filename">14-leather-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом светлом бежевом однотонном фоне крупные объёмные буквы заголовка "НАТУРАЛЬНАЯ КОЖА", выполненные из текстуры выделанной кожи с порами, складками и мягким естественным блеском, тёплое рассеянное освещение подчёркивает рельеф и благородную фактуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#8B6F47"></div><div class="swatch-hex">#8B6F47</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D2B48C"></div><div class="swatch-hex">#D2B48C</div><div class="swatch-name">Загар</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «жирная кожа», «мелкая шагрень», «тёплый оттенок», «эластичная поверхность»</div>
+</section>
+
+<section id="t15" class="card">
+  <h2>Страница 15 — Кожа рептилии (крокодил)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> чешуйчатый, с выпуклыми щитками</div>
+    <div class="profile-item"><strong>Блеск:</strong> глянцевый, с бликами на чешуйках</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (рептилия)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны крупные чешуйки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> экзотичный, дорогой, хищный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('15-reptile-A.jpg')"><img src="15-reptile-A.jpg" alt="Кожа рептилии — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 15-reptile-A.jpg</div>'"></div><div class="img-filename">15-reptile-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру кожи крокодила с чешуйчатым рельефом и глянцевыми пятнами, тёмно-зелёные и коричневые оттенки, поверх фона в центре крупный контрастный заголовок "КОЖА РЕПТИЛИИ" простым золотистым однотонным шрифтом, чётким и читаемым, современный дизайн, экзотика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('15-reptile-B.jpg')"><img src="15-reptile-B.jpg" alt="Кожа рептилии — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 15-reptile-B.jpg</div>'"></div><div class="img-filename">15-reptile-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом песочном однотонном фоне крупные объёмные буквы заголовка "КОЖА РЕПТИЛИИ", выполненные из текстуры крокодиловой кожи с выпуклыми чешуйками, контрастное освещение подчёркивает каждый щиток на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#2F4F2F"></div><div class="swatch-hex">#2F4F2F</div><div class="swatch-name">Тёмно-зелёный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#556B2F"></div><div class="swatch-hex">#556B2F</div><div class="swatch-name">Оливковый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F4E4BC"></div><div class="swatch-hex">#F4E4BC</div><div class="swatch-name">Песочный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#DAA520"></div><div class="swatch-hex">#DAA520</div><div class="swatch-name">Золотой</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «крупные щитки», «гладкие чешуйки», «рептильный узор», «дикая кожа»</div>
+</section>
+
+<section id="t16" class="card">
+  <h2>Страница 16 — Мех леопарда</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> ворсистый, с пятнистым узором</div>
+    <div class="profile-item"><strong>Блеск:</strong> мягкий, с лёгким блеском на ворсе</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (животное)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны пятна и ворс)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> дикий, роскошный, динамичный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('16-leopard-A.jpg')"><img src="16-leopard-A.jpg" alt="Мех леопарда — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 16-leopard-A.jpg</div>'"></div><div class="img-filename">16-leopard-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру меха леопарда с пятнистым ворсом, мягким блеском и объёмными переходами от золотистого до тёмно-коричневого, поверх фона в центре крупный контрастный заголовок "МЕХ ЛЕОПАРДА" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, дикая природа</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('16-leopard-B.jpg')"><img src="16-leopard-B.jpg" alt="Мех леопарда — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 16-leopard-B.jpg</div>'"></div><div class="img-filename">16-leopard-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом песочном однотонном фоне крупные объёмные буквы заголовка "МЕХ ЛЕОПАРДА", выполненные из текстуры леопардового меха с пятнистым узором и ворсистой поверхностью, мягкое боковое освещение подчёркивает пушистость и объём букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#DAA520"></div><div class="swatch-hex">#DAA520</div><div class="swatch-name">Золотисто-жёлтый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B4513"></div><div class="swatch-hex">#8B4513</div><div class="swatch-name">Тёмно-коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Песочный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2F1B14"></div><div class="swatch-hex">#2F1B14</div><div class="swatch-name">Почти чёрный</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «густой ворс», «контрастные пятна», «шёлковистый блеск», «хищный принт»</div>
+</section>
+
+<section id="t17" class="card">
+  <h2>Страница 17 — Птичьи перья (павлин)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> с бороздками, пушистый, с микроструктурой</div>
+    <div class="profile-item"><strong>Блеск:</strong> иризирующий, сине-зелёные переливы</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (птица)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны отдельные перья)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> изящный, благородный, воздушный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('17-feathers-A.jpg')"><img src="17-feathers-A.jpg" alt="Перья павлина — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 17-feathers-A.jpg</div>'"></div><div class="img-filename">17-feathers-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру птичьих перьев павлина с иризирующими сине-зелёными отливами и микроскопическими бороздками, поверх фона в центре крупный контрастный заголовок "ПЕРЬЯ ПАВЛИНА" простым золотистым однотонным шрифтом, чётким и читаемым, современный дизайн, изящество</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('17-feathers-B.jpg')"><img src="17-feathers-B.jpg" alt="Перья павлина — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 17-feathers-B.jpg</div>'"></div><div class="img-filename">17-feathers-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом тёмно-синем однотонном фоне крупные объёмные буквы заголовка "ПЕРЬЯ ПАВЛИНА", выполненные из текстуры павлиньих перьев с переливчатыми бороздками и мерцающими вкраплениями, контрастное освещение создаёт эффект иризации на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#000080"></div><div class="swatch-hex">#000080</div><div class="swatch-name">Тёмно-синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#008080"></div><div class="swatch-hex">#008080</div><div class="swatch-name">Бирюзовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#228B22"></div><div class="swatch-hex">#228B22</div><div class="swatch-name">Изумрудный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFD700"></div><div class="swatch-hex">#FFD700</div><div class="swatch-name">Золотой</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «голографические перья», «металлический блеск», «бархатистый ворс», «павлиний глаз»</div>
+</section>
+
+<section id="t18" class="card">
+  <h2>Страница 18 — Тополиный пух</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> пушистый, невесомый, с ворсинками</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, почти прозрачный</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (растительный)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны отдельные пушинки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> лёгкий, летний, воздушный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('18-fluff-A.jpg')"><img src="18-fluff-A.jpg" alt="Тополиный пух — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 18-fluff-A.jpg</div>'"></div><div class="img-filename">18-fluff-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру тополиного пуха с невесомыми пушистыми ворсинками, почти прозрачными, на тёмном фоне, поверх фона в центре крупный контрастный заголовок "ПУХ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, воздушная лёгкость</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('18-fluff-B.jpg')"><img src="18-fluff-B.jpg" alt="Тополиный пух — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 18-fluff-B.jpg</div>'"></div><div class="img-filename">18-fluff-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком чёрном однотонном фоне крупные объёмные буквы заголовка "ПУХ", выполненные из текстуры одуванчика с тончайшими волосками и семенами, мягкое рассеянное освещение создаёт эффект парения и прозрачности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Чёрный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FAFAFA"></div><div class="swatch-hex">#FAFAFA</div><div class="swatch-name">Почти белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5F5DC"></div><div class="swatch-hex">#F5F5DC</div><div class="swatch-name">Бежевый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8E8E8"></div><div class="swatch-hex">#E8E8E8</div><div class="swatch-name">Серебристо-белый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «летящие ворсинки», «полупрозрачные нити», «невесомая вата», «светлые хлопья»</div>
+</section>
+
+<div class="section-divider"><span>Раздел 3 · Пористые, губчатые, воздушные</span></div>
+
+<section id="t19" class="card">
+  <h2>Страница 19 — Старая выцветшая бумага</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> пористый, с потёртостями, рыхлый</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, без бликов</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (целлюлоза)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны волокна и выцветания)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> винтажный, ностальгический, крафтовый</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('19-paper-A.jpg')"><img src="19-paper-A.jpg" alt="Бумага — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 19-paper-A.jpg</div>'"></div><div class="img-filename">19-paper-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой старой выцветшей бумаги на фоне, винтажные потертости, следы времени, пожелтевшие края, аналоговая крафтовая эстетика, в центре крупный заголовок "ВИНТАЖ И ПАТИНА", современный дизайн, теплый приглушенный свет</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('19-paper-B.jpg')"><img src="19-paper-B.jpg" alt="Бумага — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 19-paper-B.jpg</div>'"></div><div class="img-filename">19-paper-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на выцветшем пастельном фоне крупные буквы заголовка "ВИНТАЖ И ПАТИНА", выполненные из текстуры старой бумаги с потертостями, пожелтевшими краями и следами времени, теплый приглушенный свет добавляет ностальгическую атмосферу, крафтовый современный дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D2B48C"></div><div class="swatch-hex">#D2B48C</div><div class="swatch-name">Загар</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-hex">#8B7355</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «пожелтевшая бумага», «рваные края», «следы чернил», «старческий пергамент»</div>
+</section>
+
+<section id="t20" class="card">
+  <h2>Страница 20 — Древесина (годовые кольца)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> пористый, с кольцами, волокнистый</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с тёплым отливом</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (растительный)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны кольца и волокна)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> тёплый, натуральный, уютный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('20-wood-A.jpg')"><img src="20-wood-A.jpg" alt="Древесина — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 20-wood-A.jpg</div>'"></div><div class="img-filename">20-wood-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с текстурой натурального дерева на фоне, видимые годовые кольца, теплая органическая поверхность, шероховатая необработанная фактура, в центре крупный заголовок "ПРИРОДНАЯ ФАКТУРА", современный дизайн, теплый свет</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('20-wood-B.jpg')"><img src="20-wood-B.jpg" alt="Древесина — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 20-wood-B.jpg</div>'"></div><div class="img-filename">20-wood-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на теплом кремовом фоне крупные буквы заголовка "ПРИРОДНАЯ ФАКТУРА", выполненные из текстуры натурального дерева с годовыми кольцами и шероховатостью, теплый боковой свет подчеркивает органическую структуру букв, уютный современный стиль</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#DEB887"></div><div class="swatch-hex">#DEB887</div><div class="swatch-name">Бурый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B6F47"></div><div class="swatch-hex">#8B6F47</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF8DC"></div><div class="swatch-hex">#FFF8DC</div><div class="swatch-name">Кремовый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмное дерево</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «глубокие кольца», «грубая кора», «тёплый оттенок дуба», «волокнистая структура»</div>
+</section>
+
+<section id="t21" class="card">
+  <h2>Страница 21 — Коралл / пемза</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> пористый, с множеством отверстий</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с мягким светом</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (морской / вулканический)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны поры и неровности)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> органичный, морской, лёгкий</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('21-coral-A.jpg')"><img src="21-coral-A.jpg" alt="Коралл — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 21-coral-A.jpg</div>'"></div><div class="img-filename">21-coral-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с пористой текстурой коралла или пемзы на фоне, губчатая структура с множеством отверстий, природная органическая фактура, в центре крупный заголовок "ПОРИСТАЯ СТРУКТУРА", современный дизайн, мягкий естественный свет</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('21-coral-B.jpg')"><img src="21-coral-B.jpg" alt="Коралл — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 21-coral-B.jpg</div>'"></div><div class="img-filename">21-coral-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светло-бежевом матовом фоне крупные буквы заголовка "ПОРИСТАЯ СТРУКТУРА", выполненные из фактуры коралла или пемзы с множеством отверстий и губчатой органикой, мягкий естественный свет выявляет объем каждой буквы, современный природный дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFA07A"></div><div class="swatch-hex">#FFA07A</div><div class="swatch-name">Светлый лососевый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FAEBD7"></div><div class="swatch-hex">#FAEBD7</div><div class="swatch-name">Античный белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#CD853F"></div><div class="swatch-hex">#CD853F</div><div class="swatch-name">Перу</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «губчатый камень», «ноздреватая порода», «коралловый риф», «воздушные пустоты»</div>
+</section>
+
+<section id="t22" class="card">
+  <h2>Страница 22 — Лёд</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> гладкий, но с трещинами и пузырьками</div>
+    <div class="profile-item"><strong>Блеск:</strong> полупрозрачный, с отражениями</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (вода)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны трещины и пузырьки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> холодный, чистый, хрупкий</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('22-ice-A.jpg')"><img src="22-ice-A.jpg" alt="Лёд — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 22-ice-A.jpg</div>'"></div><div class="img-filename">22-ice-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру прозрачного льда с внутренними трещинами и пузырьками воздуха, холодные голубые оттенки, поверх фона в центре крупный контрастный заголовок "ЛЁД" простым тёмно-синим однотонным шрифтом, чётким и читаемым, современный дизайн, хрустальная свежесть</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('22-ice-B.jpg')"><img src="22-ice-B.jpg" alt="Лёд — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 22-ice-B.jpg</div>'"></div><div class="img-filename">22-ice-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом белом однотонном фоне крупные объёмные буквы заголовка "ЛЁД", выполненные из текстуры замёрзшей воды с трещинами и пузырьками, холодное боковое освещение создаёт игру света в толще букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#F0F8FF"></div><div class="swatch-hex">#F0F8FF</div><div class="swatch-name">Алисовый синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B0E0E6"></div><div class="swatch-hex">#B0E0E6</div><div class="swatch-name">Пороховой синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4682B4"></div><div class="swatch-hex">#4682B4</div><div class="swatch-name">Стальной синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «голубой ледник», «хрустальные прожилки», «замёрзшие пузырьки», «ледяная гладь»</div>
+</section>
+
+<section id="t23" class="card">
+  <h2>Страница 23 — Мох</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> мягкий, пористый, пушистый</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с тёмными зелёными оттенками</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (растительный)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны отдельные веточки мха)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> живой, лесной, влажный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('23-moss-A.jpg')"><img src="23-moss-A.jpg" alt="Мох — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 23-moss-A.jpg</div>'"></div><div class="img-filename">23-moss-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру мха и лишайника с бархатистой зелёно-серой поверхностью, микродетали и споры, поверх фона в центре крупный контрастный заголовок "МОХ" простым тёмно-зелёным однотонным шрифтом, чётким и читаемым, современный дизайн, живая органика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('23-moss-B.jpg')"><img src="23-moss-B.jpg" alt="Мох — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 23-moss-B.jpg</div>'"></div><div class="img-filename">23-moss-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светлом сером однотонном фоне крупные объёмные буквы заголовка "МОХ", выполненные из текстуры мха с пушистыми ворсинками и мельчайшими каплями, мягкое боковое освещение придаёт объём и бархатистость буквам, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#556B2F"></div><div class="swatch-hex">#556B2F</div><div class="swatch-name">Тёмный оливковый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2F4F2F"></div><div class="swatch-hex">#2F4F2F</div><div class="swatch-name">Глубокий лесной</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D3D3D3"></div><div class="swatch-hex">#D3D3D3</div><div class="swatch-name">Светло-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8FBC8F"></div><div class="swatch-hex">#8FBC8F</div><div class="swatch-name">Тёмная морская пена</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «бархатный мох», «влажный лишайник», «лесная подушка», «изумрудные оттенки»</div>
+</section>
+
+<section id="t24" class="card">
+  <h2>Страница 24 — Паутина</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> сетчатый, тонкий, почти невесомый</div>
+    <div class="profile-item"><strong>Блеск:</strong> мерцающий, с серебристым отливом</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (шёлк паука)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны нити и капли)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> хрупкий, эфирный, загадочный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('24-web-A.jpg')"><img src="24-web-A.jpg" alt="Паутина — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 24-web-A.jpg</div>'"></div><div class="img-filename">24-web-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру паутины с тончайшими переплетёнными полупрозрачными нитями, серебристыми и воздушными, поверх фона в центре крупный контрастный заголовок "ПАУТИНА" простым тёмно-серым однотонным шрифтом, чётким и читаемым, современный дизайн, эфирная лёгкость</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('24-web-B.jpg')"><img src="24-web-B.jpg" alt="Паутина — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 24-web-B.jpg</div>'"></div><div class="img-filename">24-web-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом чёрном однотонном фоне крупные объёмные буквы заголовка "ПАУТИНА", выполненные из текстуры паучьего шёлка с тончайшими нитями и микро-каплями росы, мягкое боковое освещение создаёт мерцание нитей, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Чёрный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебро</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E8E8E8"></div><div class="swatch-hex">#E8E8E8</div><div class="swatch-name">Светлое серебро</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F0F8FF"></div><div class="swatch-hex">#F0F8FF</div><div class="swatch-name">Алисовый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «паучья пряжа», «серебристые нити», «капли росы», «лёгкое кружево»</div>
+</section>
+
+<section id="t25" class="card">
+  <h2>Страница 25 — Сугроб (снег)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> рыхлый, зернистый, с микротенями</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с искрами от кристаллов</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (замёрзшая вода)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны снежинки и крупинки)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> свежий, чистый, зимний</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('25-snow-A.jpg')"><img src="25-snow-A.jpg" alt="Снег — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 25-snow-A.jpg</div>'"></div><div class="img-filename">25-snow-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру свежевыпавшего снега с рыхлой зернистой структурой и микротенями, белый с голубоватым отливом, поверх фона в центре крупный контрастный заголовок "СНЕГ" простым тёмно-синим однотонным шрифтом, чётким и читаемым, современный дизайн, зимняя чистота</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('25-snow-B.jpg')"><img src="25-snow-B.jpg" alt="Снег — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 25-snow-B.jpg</div>'"></div><div class="img-filename">25-snow-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком тёмно-синем однотонном фоне крупные объёмные буквы заголовка "СНЕГ", выполненные из текстуры снега с кристаллическими вкраплениями и пушистостью, мягкое боковое освещение создаёт эффект искристости на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#191970"></div><div class="swatch-hex">#191970</div><div class="swatch-name">Полуночный синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F0F8FF"></div><div class="swatch-hex">#F0F8FF</div><div class="swatch-name">Алисовый синий</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#B0C4DE"></div><div class="swatch-hex">#B0C4DE</div><div class="swatch-name">Светло-стальной</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «пушистый сугроб», «искрящийся наст», «голубые тени», «кристаллический покров»</div>
+</section>
+
+<section id="t26" class="card">
+  <h2>Страница 26 — Сухая губка</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> пористый, шероховатый, с ячейками</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, без бликов</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (морской)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны крупные поры)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> грубый, натуральный, функциональный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('26-sponge-A.jpg')"><img src="26-sponge-A.jpg" alt="Губка — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 26-sponge-A.jpg</div>'"></div><div class="img-filename">26-sponge-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру сухой губки с пористой хаотичной структурой, грубой и шероховатой, природные бежево-коричневые тона, поверх фона в центре крупный контрастный заголовок "ГУБКА" простым тёмно-коричневым однотонным шрифтом, чётким и читаемым, современный дизайн, природный абстракционизм</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('26-sponge-B.jpg')"><img src="26-sponge-B.jpg" alt="Губка — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 26-sponge-B.jpg</div>'"></div><div class="img-filename">26-sponge-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом бежевом однотонном фоне крупные объёмные буквы заголовка "ГУБКА", выполненные из текстуры сухой губки с множеством пор и неровностей, рассеянное освещение подчёркивает пористый рельеф букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#D2B48C"></div><div class="swatch-hex">#D2B48C</div><div class="swatch-name">Загар</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-hex">#8B7355</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «крупнопористый», «губчатая масса», «шершавая поверхность», «натуральная губка»</div>
+</section>
+
+<div class="section-divider"><span>Раздел 4 · Шероховатые, рельефные, твёрдые</span></div>
+
+<section id="t27" class="card">
+  <h2>Страница 27 — Мокрый асфальт</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с мелкими камнями</div>
+    <div class="profile-item"><strong>Блеск:</strong> влажный, с отражениями в лужах</div>
+    <div class="profile-item"><strong>Происхождение:</strong> индустриальный (нефтебитум)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны камни и лужи)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> урбанистичный, мрачный, холодный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('27-asphalt-A.jpg')"><img src="27-asphalt-A.jpg" alt="Асфальт — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 27-asphalt-A.jpg</div>'"></div><div class="img-filename">27-asphalt-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру мокрого асфальта с отражающими лужами и глубокими тёмно-серыми тонами, поверх фона в центре крупный контрастный заголовок "МОКРЫЙ АСФАЛЬТ" простым светло-голубым однотонным шрифтом, чётким и читаемым, современный дизайн, урбанистика</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('27-asphalt-B.jpg')"><img src="27-asphalt-B.jpg" alt="Асфальт — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 27-asphalt-B.jpg</div>'"></div><div class="img-filename">27-asphalt-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом тёмно-сером однотонном фоне крупные объёмные буквы заголовка "МОКРЫЙ АСФАЛЬТ", выполненные из текстуры мокрого асфальта с зеркальными бликами от луж, контрастное освещение создаёт отражения на поверхности букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)"> Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#2F4F4F"></div><div class="swatch-hex">#2F4F4F</div><div class="swatch-name">Тёмный грифель</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#696969"></div><div class="swatch-hex">#696969</div><div class="swatch-name">Тусклый серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#87CEEB"></div><div class="swatch-hex">#87CEEB</div><div class="swatch-name">Светло-голубой</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0A0A0A"></div><div class="swatch-hex">#0A0A0A</div><div class="swatch-name">Почти чёрный</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «гладкий, но с зернистостью», «отражающие лужи», «тёмно-серый с холодным отливом», «городской тротуар»</div>
+</section>
+
+<section id="t28" class="card">
+  <h2>Страница 28 — Бетон (грубый рельеф)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с порами и трещинами</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, без бликов</div>
+    <div class="profile-item"><strong>Происхождение:</strong> индустриальный (цемент)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны трещины и поры)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> брутальный, грубый, урбанистичный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('28-concrete-A.jpg')"><img src="28-concrete-A.jpg" alt="Бетон — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 28-concrete-A.jpg</div>'"></div><div class="img-filename">28-concrete-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с крупной текстурой грубого бетона на фоне, рельефная шероховатая поверхность с видимыми порами и микротрещинами, матовое освещение, мягкие тени подчеркивают объем, в центре крупный заголовок "ГРУБЫЙ РЕЛЬЕФ", современный дизайн, высокая детализация текстуры</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('28-concrete-B.jpg')"><img src="28-concrete-B.jpg" alt="Бетон — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 28-concrete-B.jpg</div>'"></div><div class="img-filename">28-concrete-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на чистом белом фоне крупные объемные буквы заголовка "ГРУБЫЙ РЕЛЬЕФ", выполненные из фактурного бетона с видимыми порами, трещинами и шероховатостью, матовое освещение подчеркивает рельеф букв, четкие тени от букв на фоне, современный типографический дизайн, высокая детализация текстуры на поверхности букв</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#808080"></div><div class="swatch-hex">#808080</div><div class="swatch-name">Нейтральный серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#A9A9A9"></div><div class="swatch-hex">#A9A9A9</div><div class="swatch-name">Тёмно-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFFFFF;border:1px solid #333"></div><div class="swatch-hex">#FFFFFF</div><div class="swatch-name">Чистый белый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E3E3E"></div><div class="swatch-hex">#3E3E3E</div><div class="swatch-name">Глубокий графит</div></div>
+  </div>
+  <div class="tip"><strong> Совет по усилению:</strong> «бороздчатый», «оскольчатый», «крупнозернистый», «пемзовый», «с открытыми трещинами»</div>
+</section>
+
+<section id="t29" class="card">
+  <h2>Страница 29 — Обожжённая глина с кракелюром</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с сетью трещин</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с тёплым терракотовым оттенком</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (глина, обжиг)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны трещины и фактура)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> керамический, древний, искусный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('29-clay-A.jpg')"><img src="29-clay-A.jpg" alt="Глина — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 29-clay-A.jpg</div>'"></div><div class="img-filename">29-clay-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру обожжённой терракотовой глины с сетью тонких трещин-кракелюров, тёплые красно-коричневые оттенки, поверх фона в центре крупный контрастный заголовок "ГЛИНА" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, керамическая фактура</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('29-clay-B.jpg')"><img src="29-clay-B.jpg" alt="Глина — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 29-clay-B.jpg</div>'"></div><div class="img-filename">29-clay-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на матовом бежевом однотонном фоне крупные объёмные буквы заголовка "ГЛИНА", выполненные из текстуры обожжённой глины с кракелюрами, тёплый рассеянный свет подчёркивает рельеф трещин на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#CC5533"></div><div class="swatch-hex">#CC5533</div><div class="swatch-name">Терракота</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B4513"></div><div class="swatch-hex">#8B4513</div><div class="swatch-name">Тёмно-коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «глубокие трещины», «кракелюрная сеть», «терракотовая поверхность», «потрескавшаяся глазурь»</div>
+</section>
+
+<section id="t30" class="card">
+  <h2>Страница 30 — Графит</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> бархатисто-шероховатый, с металлическим блеском</div>
+    <div class="profile-item"><strong>Блеск:</strong> матово-металлический, сатиновый</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (углерод)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> микро (мелкозернистый)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> индустриальный, рисовальный, серьёзный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('30-graphite-A.jpg')"><img src="30-graphite-A.jpg" alt="Графит — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 30-graphite-A.jpg</div>'"></div><div class="img-filename">30-graphite-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру графита с бархатистым металлическим серым отливом, сатиновым блеском и микро-частицами, поверх фона в центре крупный контрастный заголовок "ГРАФИТ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, рисовальная эстетика</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('30-graphite-B.jpg')"><img src="30-graphite-B.jpg" alt="Графит — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 30-graphite-B.jpg</div>'"></div><div class="img-filename">30-graphite-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на светлом бежевом однотонном фоне крупные объёмные буквы заголовка "ГРАФИТ", выполненные из текстуры грифеля с бархатистой матовой поверхностью и металлическим отливом, мягкое освещение подчёркивает сатиновую фактуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#3E3E3E"></div><div class="swatch-hex">#3E3E3E</div><div class="swatch-name">Глубокий графит</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#696969"></div><div class="swatch-hex">#696969</div><div class="swatch-name">Тусклый серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5DEB3"></div><div class="swatch-hex">#F5DEB3</div><div class="swatch-name">Пшеничный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «сатиновый блеск», «бархатистая темнота», «мелкая пыль», «карандашный грифель»</div>
+</section>
+
+<section id="t31" class="card">
+  <h2>Страница 31 — Грязь и уличная пыль</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с подтёками и царапинами</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с грязными пятнами</div>
+    <div class="profile-item"><strong>Происхождение:</strong> индустриальный / уличный</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны грязь и пыль)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> грязный, гранжевый, агрессивный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('31-dirt-A.jpg')"><img src="31-dirt-A.jpg" alt="Грязь — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 31-dirt-A.jpg</div>'"></div><div class="img-filename">31-dirt-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер с грязной уличной текстурой на фоне, подтеки, пыль, царапины, гранж-эстетика, индустриальная атмосфера, в центре крупный заголовок "ГРЯЗЬ И ГРАНЖ", современный дизайн, контрастное жесткое освещение</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('31-dirt-B.jpg')"><img src="31-dirt-B.jpg" alt="Грязь — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 31-dirt-B.jpg</div>'"></div><div class="img-filename">31-dirt-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на грязно-сером индустриальном фоне (однотонном) крупные буквы заголовка "ГРЯЗЬ И ГРАНЖ", выполненные из фактуры с подтеками, пылью и царапинами, жесткое контрастное освещение подчеркивает рельеф грязи на буквах, брутальный современный дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#3E3E3E"></div><div class="swatch-hex">#3E3E3E</div><div class="swatch-name">Глубокий графит</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#5C4033"></div><div class="swatch-hex">#5C4033</div><div class="swatch-name">Тёмная умбра</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-hex">#8B7355</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F5F5F5"></div><div class="swatch-hex">#F5F5F5</div><div class="swatch-name">Светлый</div></div>
+  </div>
+  <div class="tip"><strong> Совет по усилению:</strong> «масляные пятна», «царапины и сколы», «городская копоть», «брызги грязи»</div>
+</section>
+
+<section id="t32" class="card">
+  <h2>Страница 32 — Старая медь с патиной</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с неровной коррозией</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с зелёными и коричневыми пятнами</div>
+    <div class="profile-item"><strong>Происхождение:</strong> металлическое (медь, окисление)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны пятна патины)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> винтажный, благородный, старый</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('32-copper-A.jpg')"><img src="32-copper-A.jpg" alt="Медь — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 32-copper-A.jpg</div>'"></div><div class="img-filename">32-copper-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру старой меди с зелёно-коричневой патиной и неровной коррозией, поверх фона в центре крупный контрастный заголовок "СТАРАЯ МЕДЬ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, винтажный металл</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('32-copper-B.jpg')"><img src="32-copper-B.jpg" alt="Медь — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 32-copper-B.jpg</div>'"></div><div class="img-filename">32-copper-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтральном тёмно-зелёном однотонном фоне крупные объёмные буквы заголовка "СТАРАЯ МЕДЬ", выполненные из текстуры меди с патиной и пятнами окисления, контрастное освещение выявляет рельеф коррозии на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#B87333"></div><div class="swatch-hex">#B87333</div><div class="swatch-name">Классическая медь</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#556B2F"></div><div class="swatch-hex">#556B2F</div><div class="swatch-name">Тёмный оливковый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2F4F2F"></div><div class="swatch-hex">#2F4F2F</div><div class="swatch-name">Глубокий лесной</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-hex">#8B7355</div><div class="swatch-name">Тёплый коричневый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «зелёная патина», «окисленная медь», «корродированная поверхность», «старинный металл»</div>
+</section>
+
+<section id="t33" class="card">
+  <h2>Страница 33 — Окаменелое дерево</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с годовыми кольцами, каменный</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с лёгким минеральным блеском</div>
+    <div class="profile-item"><strong>Происхождение:</strong> природный (окаменелость)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны кольца и каменная текстура)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> древний, вечный, геологический</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('33-petrified-A.jpg')"><img src="33-petrified-A.jpg" alt="Окаменелое дерево — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 33-petrified-A.jpg</div>'"></div><div class="img-filename">33-petrified-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру окаменелой древесины с годовыми кольцами, переходящими от коричневого к серому камню, поверх фона в центре крупный контрастный заголовок "ОКАМЕНЕЛОЕ ДЕРЕВО" простым светло-бежевым однотонным шрифтом, чётким и читаемым, современный дизайн, природная геология</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('33-petrified-B.jpg')"><img src="33-petrified-B.jpg" alt="Окаменелое дерево — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 33-petrified-B.jpg</div>'"></div><div class="img-filename">33-petrified-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтральном песочном однотонном фоне крупные объёмные буквы заголовка "ОКАМЕНЕЛОЕ ДЕРЕВО", выполненные из текстуры петрифицированной древесины с каменными кольцами, тёплый рассеянный свет подчёркивает минеральную структуру букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#8B7355"></div><div class="swatch-hex">#8B7355</div><div class="swatch-name">Тёплый коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#A9A9A9"></div><div class="swatch-hex">#A9A9A9</div><div class="swatch-name">Тёмно-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F4E4BC"></div><div class="swatch-hex">#F4E4BC</div><div class="swatch-name">Песочный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3E2723"></div><div class="swatch-hex">#3E2723</div><div class="swatch-name">Тёмный шоколад</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «минеральные кольца», «каменная древесина», «окаменевшая кора», «геологическая структура»</div>
+</section>
+
+<section id="t34" class="card">
+  <h2>Страница 34 — Ржавая сетка</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с переплетениями проволоки и ржавчиной</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с оранжево-коричневыми пятнами</div>
+    <div class="profile-item"><strong>Происхождение:</strong> индустриальный (металл, коррозия)</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны прутья и ржавчина)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> индустриальный, заброшенный, грубый</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('34-rust-A.jpg')"><img src="34-rust-A.jpg" alt="Ржавая сетка — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 34-rust-A.jpg</div>'"></div><div class="img-filename">34-rust-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру ржавой стальной сетки с переплетёнными проволоками и пятнами коррозии, оранжево-коричневая ржавчина, поверх фона в центре крупный контрастный заголовок "РЖАВАЯ СЕТКА" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, индустриальный гранж</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('34-rust-B.jpg')"><img src="34-rust-B.jpg" alt="Ржавая сетка — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 34-rust-B.jpg</div>'"></div><div class="img-filename">34-rust-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на нейтральном тёмно-сером однотонном фоне крупные объёмные буквы заголовка "РЖАВАЯ СЕТКА", выполненные из текстуры ржавой проволочной сетки с грубыми переплетениями и ржавыми пятнами, контрастное освещение подчёркивает фактуру плетения на буквах, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4>🎨 Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#B7410E"></div><div class="swatch-hex">#B7410E</div><div class="swatch-name">Ржаво-оранжевый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B4513"></div><div class="swatch-hex">#8B4513</div><div class="swatch-name">Тёмно-коричневый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2F2F2F"></div><div class="swatch-hex">#2F2F2F</div><div class="swatch-name">Тёмно-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#D2691E"></div><div class="swatch-hex">#D2691E</div><div class="swatch-name">Шоколадный</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «корродированная сетка», «оранжевые пятна», «зазубренные края», «старая решётка»</div>
+</section>
+
+<section id="t35" class="card">
+  <h2>Страница 35 — Раскалённая сталь (калёная)</h2>
+  <div class="profile">
+    <div class="profile-item"><strong>Рельеф:</strong> шероховатый, с окалиной и прожилками</div>
+    <div class="profile-item"><strong>Блеск:</strong> матовый, с оранжево-красными разводами</div>
+    <div class="profile-item"><strong>Происхождение:</strong> металлическое, ковка</div>
+    <div class="profile-item"><strong>Масштаб:</strong> макро (видны следы нагрева)</div>
+    <div class="profile-item"><strong>Эмоция:</strong> горячий, суровый, мощный</div>
+  </div>
+  <div class="block-label">Блок А</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('35-steel-A.jpg')"><img src="35-steel-A.jpg" alt="Сталь — Блок А" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 35-steel-A.jpg</div>'"></div><div class="img-filename">35-steel-A.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, фон представляет собой крупную текстуру раскалённой калёной стали с тёмно-серыми и оранжево-красными прожилками, поверх фона в центре крупный контрастный заголовок "КАЛЁНАЯ СТАЛЬ" простым белым однотонным шрифтом, чётким и читаемым, современный дизайн, индустриальная атмосфера, высокое качество</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <div class="block-label">Блок Б</div>
+  <div class="img-block"><div class="img-container" onclick="openModal('35-steel-B.jpg')"><img src="35-steel-B.jpg" alt="Сталь — Блок Б" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=placeholder>Изображение не найдено: 35-steel-B.jpg</div>'"></div><div class="img-filename">35-steel-B.jpg</div></div>
+  <div class="prompt-block"><pre class="prompt-code">Минималистичный постер, на глубоком тёмно-сером однотонном фоне крупные объёмные буквы заголовка "КАЛЁНАЯ СТАЛЬ", выполненные из текстуры раскалённого металла с оранжевыми прожилками и копотью, контрастное освещение подчёркивает раскалённые участки букв, современный типографический дизайн</pre><button class="copy-btn" onclick="copyPrompt(this)">📋 Скопировать</button></div>
+  <h4> Цветовая палитра</h4>
+  <div class="palette">
+    <div class="swatch"><div class="swatch-color" style="background:#2F2F2F"></div><div class="swatch-hex">#2F2F2F</div><div class="swatch-name">Тёмно-серый</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF4500"></div><div class="swatch-hex">#FF4500</div><div class="swatch-name">Оранжево-красный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8B0000"></div><div class="swatch-hex">#8B0000</div><div class="swatch-name">Тёмно-красный</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#C0C0C0"></div><div class="swatch-hex">#C0C0C0</div><div class="swatch-name">Серебристый</div></div>
+  </div>
+  <div class="tip"><strong>💡 Совет по усилению:</strong> «раскалённые прожилки», «окалина и копоть», «горячий металл», «кузнечная сталь»</div>
+</section>
+
+<div class="section-divider"><span>Бонус-разделы</span></div>
+
+<!-- BONUS 1 -->
+<section id="b1" class="bonus-card">
+  <h2>🎨 Комбинирование текстур</h2>
+  <p>Правильное сочетание текстур создаёт сильный визуальный контраст и передаёт нужное настроение.</p>
+  <h4>Роскошь и премиум</h4>
+  <ul><li>Бархат + Хром – классическая люксовая пара</li><li>Перламутр + Золото – морская роскошь</li><li>Кожа рептилии + Золото – хищная элегантность</li></ul>
+  <h4>Урбанистика и гранж</h4>
+  <ul><li>Бетон + Неон – киберпанк, ночной город</li><li>Мокрый асфальт + Хром – авто-эстетика, нуар</li><li>Ржавая сетка + Грязь – постапокалипсис</li></ul>
+  <h4>Природа и эко</h4>
+  <ul><li>Древесина + Мох – лесная сказка</li><li>Коралл + Перламутр – морская тема</li><li>Бумага + Кожа – винтажный крафт</li></ul>
+  <h4>Холод и чистота</h4>
+  <ul><li>Лёд + Хром – футуристичная стерильность</li><li>Снег + Стерильный пластик – лабораторная зима</li><li>Слюда + Перламутр – минеральная чистота</li></ul>
+  <h4>Огонь и мощь</h4>
+  <ul><li>Раскалённая сталь + Бетон – индустриальная мощь</li><li>Медь с патиной + Глина – древнее ремесло</li><li>Графит + Хром – технологичная строгость</li></ul>
+  <div class="tip"><strong>Правило контраста:</strong> Сочетайте гладкое с шероховатым, тёплое с холодным, матовое с глянцевым.</div>
+</section>
+
+<!-- BONUS 2 -->
+<section id="b2" class="bonus-card">
+  <h2>🌸 Сезонные текстуры</h2>
+  <h4>🌱 Весна</h4>
+  <ul><li>Мокрая листва – свежая, блестящая, с каплями</li><li>Почки деревьев – бархатистые, зелёные, хрупкие</li><li>Талый снег – влажный, зернистый, с лужами</li><li>Молодая трава – мягкая, сочная, с росой</li></ul>
+  <h4>️ Лето</h4>
+  <ul><li>Раскалённый песок – горячий, зернистый, золотистый</li><li>Сухая трава – ломкая, соломенная, выцветшая</li><li>Морская соль на коже – кристаллическая, блестящая</li><li>Спелые фрукты (кожура) – гладкая, восковая, яркая</li></ul>
+  <h4> Осень</h4>
+  <ul><li>Опавшие листья – хрупкие, морщинистые, с прожилками</li><li>Туман – мягкий, полупрозрачный, рассеянный</li><li>Мокрая кора – тёмная, скользкая, с мхом</li><li>Тыквенная кожура – ребристая, матовая, оранжевая</li></ul>
+  <h4>❄️ Зима</h4>
+  <ul><li>Иней на стекле – кристаллический, узорчатый, хрупкий</li><li>Сосульки – прозрачные, острые, с внутренними трещинами</li><li>Валёная шерсть – тёплая, плотная, ворсистая</li><li>Мёрзлая земля – твёрдая, треснувшая, серая</li></ul>
+</section>
+
+<!-- BONUS 3 -->
+<section id="b3" class="bonus-card">
+  <h2>🌍 Культурные ассоциации</h2>
+  <h4>🇯🇵 Японский стиль (ваби-саби, дзен)</h4>
+  <ul><li>Рисовая бумага – тонкая, волокнистая, полупрозрачная</li><li>Бамбук – гладкий, с узлами, тёплый</li><li>Камень сад – отшлифованный, матовый, серый</li><li>Тушь на бумаге – растекающаяся, чёрная, живая</li></ul>
+  <h4>🇸🇪 Скандинавский стиль (хюгге, лагом)</h4>
+  <ul><li>Светлое дерево (берёза) – тёплое, с мягкими кольцами</li><li>Лён – натуральный, рыхлый, бежевый</li><li>Шерсть (валяная) – плотная, мягкая, серая</li><li>Матовая керамика – гладкая, приглушённая, белая</li></ul>
+  <h4>🇮🇹 Итальянский стиль (la dolce vita)</h4>
+  <ul><li>Мрамор – холодный, с прожилками, роскошный</li><li>Винтажная кожа – потёртая, тёплая, благородная</li><li>Шёлк – струящийся, блестящий, глубокий</li><li>Травертин – пористый, тёплый, каменный</li></ul>
+  <h4>🇺🇸 Американский стиль (индастриал, лофт)</h4>
+  <ul><li>Кирпич – шероховатый, красный, с раствором</li><li>Сталь – холодная, с заклёпками, индустриальная</li><li>Состаренное дерево – грубое, с трещинами, тёмное</li><li>Бетон – брутальный, серый, пористый</li></ul>
+  <h4>🇦 Марокканский / восточный стиль</h4>
+  <ul><li>Мозаика (зелиж) – геометричная, яркая, глазурованная</li><li>Тиснёная кожа – с узором, тёплая, рельефная</li><li>Шёлк с вышивкой – блестящий, с золотыми нитями</li><li>Терракота – матовая, тёплая, пористая</li></ul>
+</section>
+
+<!-- BONUS 4 -->
+<section id="b4" class="bonus-card">
+  <h2>📊 Аналитика текстур</h2>
+  <p>Мы проанализировали 35 текстур каталога и сравнили их с трендами графического дизайна, запросами на стоковых платформах и потребностями дизайнеров.</p>
+  <h4> СУПЕР-ПОПУЛЯРНЫЕ (23% каталога)</h4>
+  <p>Используются в 70%+ дизайн-проектов:</p>
+  <ul><li>Бетон, Древесина, Кожа натуральная</li><li>Старая бумага, Бархат, Хром</li><li>Жидкое золото, Неон</li></ul>
+  <h4>⭐ ПОПУЛЯРНЫЕ (29% каталога)</h4>
+  <p>Используются в 30-50% проектов:</p>
+  <ul><li>Лёд, Снег, Глина/керамика</li><li>Графит, Ржавчина, Медь с патиной</li><li>Карбоновое волокно, Кожа рептилии</li></ul>
+  <h4>💎 НИШЕВЫЕ (29% каталога)</h4>
+  <p>Используются в 10-25% проектов:</p>
+  <ul><li>Мокрый асфальт, Перламутр, Стерильный пластик</li><li>Мох, Сталь калёная, Грязь и пыль</li><li>Окаменелое дерево, Коралл/пемза, Слюда</li></ul>
+  <h4>🌟 ЭКСКЛЮЗИВНЫЕ (19% каталога)</h4>
+  <p>Используются в &lt;10% проектов, но незаменимы:</p>
+  <ul><li>Стекловата, Масляная плёнка на воде</li><li>Мыльные пузыри, Тополиный пух</li><li>Перья павлина, Паутина, Ржавая сетка</li></ul>
+  <div class="tip"><strong>Что это значит для вас?</strong><br>
+  <strong>52% популярных текстур</strong> — гарантия, что каталог подойдёт для большинства задач.<br>
+  <strong>48% нишевых и эксклюзивных</strong> — ваше конкурентное преимущество, когда нужна уникальность.<br><br>
+  <strong>280 иллюстраций</strong> (70 промтов × 4 генератора) показывают каждую текстуру с разных сторон — вы получаете не просто 35 текстур, а целую библиотеку визуальных решений.</div>
+</section>
+
+<!-- BONUS 5 -->
+<section id="b5" class="bonus-card">
+  <h2>✅ Чек-лист проверки промпта</h2>
+  <p>Перед генерацией проверьте свой промпт по этим пунктам:</p>
+  <h4>Базовые параметры</h4>
+  <div class="check-item"><input type="checkbox"><label>Рельеф указан (гладкий / шероховатый / пористый / ворсистый)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Блеск описан (матовый / глянцевый / зеркальный / мерцающий)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Происхождение обозначено (природный / синтетический / индустриальный)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Масштаб задан (макро / микро)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Эмоция / настроение передано (брутальный / нежный / роскошный)</label></div>
+  <h4>Визуальные детали</h4>
+  <div class="check-item"><input type="checkbox"><label>Указаны цвета или цветовая температура (тёплый / холодный)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Описано освещение (мягкое / контрастное / боковое / студийное)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Упомянут фон (однотонный / текстурный / цвет)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Задан стиль (минимализм / гранж / киберпанк / винтаж)</label></div>
+  <h4>Для варианта Б (текстурные буквы)</h4>
+  <div class="check-item"><input type="checkbox"><label>Указано, что буквы выполнены из текстуры</label></div>
+  <div class="check-item"><input type="checkbox"><label>Описан объём букв (крупные / объёмные)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Задан цвет фона для контраста</label></div>
+  <div class="check-item"><input type="checkbox"><label>Упомянуто освещение букв (блики / тени / отражения)</label></div>
+  <h4>Усилители (опционально)</h4>
+  <div class="check-item"><input type="checkbox"><label>Добавлены усиливающие прилагательные из совета по усилению</label></div>
+  <div class="check-item"><input type="checkbox"><label>Указаны детали (трещины / поры / ворсинки / прожилки)</label></div>
+  <div class="check-item"><input type="checkbox"><label>Добавлен контекст (лабораторный / уличный / морской)</label></div>
+</section>
+
+<footer style="text-align:center;padding:40px 20px;color:var(--text2);font-size:14px;border-top:1px solid var(--border);margin-top:40px">
+  <div style="color:var(--gold);font-size:18px;margin-bottom:8px">ПАЛЕТКА ТЕКСТУР</div>
+  <div>Каталог-конструктор для дизайнеров, нейросетей и референсов</div>
+  <div style="margin-top:12px;font-style:italic">Автор: Оксана Титаренко · 2026</div>
+  <div style="margin-top:8px;font-size:12px">35 текстур · 70 промтов · 280 иллюстраций</div>
+</footer>
+
+</div>
+
+<script>
+// Copy prompt
+function copyPrompt(btn){
+  const code=btn.previousElementSibling;
+  const text=code.textContent.trim();
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+      const orig=btn.textContent;
+      btn.textContent='✅ Скопировано!';
+      btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied')},2000);
+    }).catch(()=>fallbackCopy(text,btn));
+  }else{fallbackCopy(text,btn)}
+}
+function fallbackCopy(text,btn){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');
+    const orig=btn.textContent;btn.textContent='✅ Скопировано!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied')},2000);
+  }catch(e){btn.textContent='❌ Ошибка'}
+  document.body.removeChild(ta);
+}
+
+// Modal & zoom
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
+let currentZoom=1;
+function openModal(src){
+  modalImg.src=src;
+  currentZoom=1;
+  modalImg.style.transform='scale(1)';
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  modal.classList.remove('active');
+  document.body.style.overflow='';
+}
+function zoomIn(){currentZoom=Math.min(currentZoom+0.25,3);modalImg.style.transform='scale('+currentZoom+')'}
+function zoomOut(){currentZoom=Math.max(currentZoom-0.25,0.5);modalImg.style.transform='scale('+currentZoom+')'}
+function resetZoom(){currentZoom=1;modalImg.style.transform='scale(1)'}
+modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+
+// Touch pinch zoom
+let initialDistance=0;
+modalImg.addEventListener('touchstart',function(e){
+  if(e.touches.length===2){
+    initialDistance=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+  }
+},{passive:true});
+modalImg.addEventListener('touchmove',function(e){
+  if(e.touches.length===2&&initialDistance>0){
+    const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    const delta=dist-initialDistance;
+    currentZoom=Math.max(0.5,Math.min(3,currentZoom+delta*0.005));
+    modalImg.style.transform='scale('+currentZoom+')';
+    initialDistance=dist;
+  }
+},{passive:true});
+
+// Back to top
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>500)backTop.classList.add('visible');
+  else backTop.classList.remove('visible');
+});
+
+// Smooth scroll
+function scrollToId(id){
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// Image error handler
+document.querySelectorAll('.img-container img').forEach(img=>{
+  img.addEventListener('error',function(){
+    this.style.display='none';
+    const ph=document.createElement('div');
+    ph.className='placeholder';
+    ph.textContent='Изображение не найдено: '+this.getAttribute('src');
+    this.parentElement.appendChild(ph);
+  });
+});
+</script>
+</body>
+</html>
+```
