@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Демо-версия каталога текстур и промтов</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f5f5; color: #222; line-height: 1.5; }
+  .page { width: 210mm; min-height: 297mm; padding: 20mm; margin: 10mm auto; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  @media print { body { background: white; } .page { margin: 0; box-shadow: none; } .no-print { display: none !important; } }
+  
+  .cover { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; overflow: hidden; }
+  .cover::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 50%); }
+  .cover-content { position: relative; z-index: 2; }
+  .cover-badge { display: inline-block; background: rgba(233,69,96,0.9); color: white; padding: 8px 24px; border-radius: 30px; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
+  .cover h1 { font-size: 42px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; line-height: 1.1; }
+  .cover h1 span { color: #e94560; }
+  .cover-sub { font-size: 18px; opacity: 0.9; margin-bottom: 40px; font-weight: 300; }
+  .cover-features { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .cover-feat { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 12px; min-width: 140px; }
+  .cover-feat-num { font-size: 28px; font-weight: 800; color: #e94560; }
+  .cover-feat-text { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+  .cover-author { font-size: 14px; opacity: 0.7; margin-top: 20px; }
+  .cover-watermark { position: absolute; bottom: 30px; right: 30px; font-size: 80px; font-weight: 900; color: rgba(233,69,96,0.15); letter-spacing: 5px; transform: rotate(-15deg); z-index: 1; }
+  
+  .texture-page { position: relative; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid #e94560; }
+  .page-title { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #e94560; font-weight: 700; }
+  .page-num { background: #1a1a2e; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+  .texture-num { font-size: 72px; font-weight: 900; color: #e94560; opacity: 0.15; position: absolute; top: 80px; right: 30px; line-height: 1; }
+  .texture-name { font-size: 32px; font-weight: 800; margin-bottom: 8px; color: #1a1a2e; }
+  .texture-tagline { font-size: 16px; color: #666; font-style: italic; margin-bottom: 25px; }
+  .texture-image-wrapper { position: relative; width: 100%; height: 320px; border-radius: 16px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .texture-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+  .texture-image-wrapper::after { content: 'DEMO'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 80px; font-weight: 900; color: rgba(233,69,96,0.25); letter-spacing: 15px; pointer-events: none; }
+  .texture-desc { background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #e94560; margin-bottom: 20px; }
+  .texture-desc h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #e94560; margin-bottom: 8px; }
+  .texture-desc p { font-size: 14px; color: #444; }
+  .texture-uses { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .use-item { background: white; border: 1px solid #e0e0e0; padding: 12px 15px; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .use-icon { font-size: 18px; }
+  .page-footer { position: absolute; bottom: 20mm; left: 20mm; right: 20mm; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #999; padding-top: 10px; border-top: 1px solid #eee; }
+  
+  .prompts-page { background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%); }
+  .prompts-header { text-align: center; margin-bottom: 30px; }
+  .prompts-header h2 { font-size: 32px; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; }
+  .prompts-header p { font-size: 14px; color: #666; }
+  .prompt-card { background: white; border-radius: 16px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; position: relative; overflow: hidden; }
+  .prompt-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: linear-gradient(180deg, #e94560, #0f3460); }
+  .prompt-num { display: inline-block; background: #e94560; color: white; width: 32px; height: 32px; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 700; margin-bottom: 12px; }
+  .prompt-title { font-size: 20px; font-weight: 700; color: #1a1a2e; margin-bottom: 15px; }
+  .prompt-box { background: #1a1a2e; color: #e0e0e0; padding: 18px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; margin-bottom: 15px; position: relative; border: 2px dashed #e94560; }
+  .prompt-box::before { content: 'DEMO'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-20deg); font-size: 60px; font-weight: 900; color: rgba(233,69,96,0.15); letter-spacing: 8px; font-family: Arial; }
+  .prompt-result { width: 100%; height: 180px; border-radius: 10px; overflow: hidden; margin-bottom: 12px; position: relative; }
+  .prompt-result img { width: 100%; height: 100%; object-fit: cover; }
+  .prompt-result::after { content: 'DEMO'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-20deg); font-size: 50px; font-weight: 900; color: rgba(233,69,96,0.3); letter-spacing: 8px; pointer-events: none; }
+  .prompt-uses { display: flex; gap: 8px; flex-wrap: wrap; }
+  .prompt-use-tag { background: #f0f0f0; padding: 5px 12px; border-radius: 20px; font-size: 12px; color: #555; }
+  
+  .final-page { background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); color: white; display: flex; flex-direction: column; justify-content: center; }
+  .final-title { font-size: 32px; font-weight: 800; margin-bottom: 12px; text-align: center; }
+  .final-title span { color: #e94560; }
+  .final-sub { text-align: center; font-size: 15px; opacity: 0.9; margin-bottom: 20px; }
+  .teaser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+  .teaser-item { aspect-ratio: 1; border-radius: 8px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(255,255,255,0.7); filter: blur(6px); }
+  .teaser-item::after { content: '?'; position: absolute; font-size: 28px; font-weight: 900; color: rgba(233,69,96,0.7); filter: none; }
+  .teaser-note { text-align: center; font-size: 12px; opacity: 0.7; margin-bottom: 20px; }
+  .categories { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+  .cat-item { background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .cat-item .count { background: #e94560; color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+  .final-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .final-stat { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; text-align: center; }
+  .final-stat-num { font-size: 28px; font-weight: 800; color: #e94560; }
+  .final-stat-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+  .final-cta { text-align: center; background: #e94560; padding: 18px; border-radius: 12px; margin-bottom: 15px; }
+  .final-cta-text { font-size: 18px; font-weight: 700; }
+  .final-cta-sub { font-size: 12px; opacity: 0.9; margin-top: 5px; }
+  .final-note { text-align: center; font-size: 11px; opacity: 0.7; font-style: italic; }
+  
+  .print-btn { position: fixed; bottom: 30px; right: 30px; background: #e94560; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(233,69,96,0.4); z-index: 1000; transition: all 0.3s; }
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(233,69,96,0.6); }
+  .instructions { background: #fff3cd; border: 1px solid #ffc107; border-radius: 10px; padding: 15px 20px; margin: 20mm auto 10mm; max-width: 210mm; font-size: 14px; color: #856404; }
+  .instructions b { color: #664d03; }
+</style>
+</head>
+<body>
+
+<div class="instructions no-print">
+  <b>📄 Как сохранить в PDF:</b> Нажмите кнопку «Сохранить как PDF» внизу экрана → в открывшемся окне выберите «Сохранить как PDF» → готово!
+</div>
+
+<!-- ТИТУЛЬНАЯ СТРАНИЦА -->
+<div class="page cover">
+  <div class="cover-content">
+    <div class="cover-badge">Демо-версия</div>
+    <h1>Каталог<br><span>текстур и промтов</span></h1>
+    <div class="cover-sub">Ваш контент deserves лучшего визуала</div>
+    
+    <div class="cover-features">
+      <div class="cover-feat">
+        <div class="cover-feat-num">5</div>
+        <div class="cover-feat-text">Текстур</div>
+      </div>
+      <div class="cover-feat">
+        <div class="cover-feat-num">3</div>
+        <div class="cover-feat-text">Промта</div>
+      </div>
+      <div class="cover-feat">
+        <div class="cover-feat-num" style="font-size:32px;">∞</div>
+        <div class="cover-feat-text">Возможностей</div>
+      </div>
+    </div>
+    
+    <div class="cover-author">
+      Создано для тех, кто хочет, чтобы их контент запоминали
+    </div>
+  </div>
+  <div class="cover-watermark">DEMO</div>
+</div>
+
+<!-- СТРАНИЦА 1: МРАМОР -->
+<div class="page texture-page">
+  <div class="texture-num">01</div>
+  <div class="page-header">
+    <div class="page-title">Текстура #1 · Классика</div>
+    <div class="page-num">1</div>
+  </div>
+  <div class="texture-name">Белый мрамор</div>
+  <div class="texture-tagline">Классика, которая всегда работает. Luxury-фон для экспертного контента.</div>
+  <div class="texture-image-wrapper">
+    <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/123d7a558-35bc-4137-9690-0d66f26d4b23.png" alt="Белый мрамор">
+  </div>
+  <div class="texture-desc">
+    <h3>Описание</h3>
+    <p>Белый мрамор с мягкими серыми прожилками — универсальный фон, который мгновенно повышает восприятие контента. Идеально подходит для экспертных постов, обучающих материалов и luxury-тематики. Отлично читается с тёмным шрифтом.</p>
+  </div>
+  <div class="texture-uses">
+    <div class="use-item"><span class="use-icon"></span> Посты психолога</div>
+    <div class="use-item"><span class="use-icon">🎓</span> Экспертные статьи</div>
+    <div class="use-item"><span class="use-icon">💼</span> Бизнес-контент</div>
+    <div class="use-item"><span class="use-icon">✨</span> Luxury-темы</div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>1 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 2: ДЕРЕВО -->
+<div class="page texture-page">
+  <div class="texture-num">02</div>
+  <div class="page-header">
+    <div class="page-title">Текстура #2 · Уют</div>
+    <div class="page-num">2</div>
+  </div>
+  <div class="texture-name">Натуральное дерево</div>
+  <div class="texture-tagline">Тепло, натуральность, доверие. Идеально для личного контента.</div>
+  <div class="texture-image-wrapper">
+    <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/151a731c9-22f1-496e-849b-021b20bdec81.png" alt="Натуральное дерево">
+  </div>
+  <div class="texture-desc">
+    <h3>Описание</h3>
+    <p>Натуральное дерево светлых тонов с видимой структурой — создаёт ощущение уюта и близости. Идеально для лайфстайл-блогов, семейного контента, хендмейда и кулинарии. Хорошо сочетается с рукописными шрифтами и тёплыми цветами.</p>
+  </div>
+  <div class="texture-uses">
+    <div class="use-item"><span class="use-icon">🏡</span> Лайфстайл-блоги</div>
+    <div class="use-item"><span class="use-icon">👨‍‍👧</span> Семейный контент</div>
+    <div class="use-item"><span class="use-icon">🧶</span> Хендмейд</div>
+    <div class="use-item"><span class="use-icon"></span> Кулинария</div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>2 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 3: БЕТОН -->
+<div class="page texture-page">
+  <div class="texture-num">03</div>
+  <div class="page-header">
+    <div class="page-title">Текстура #3 · Минимализм</div>
+    <div class="page-num">3</div>
+  </div>
+  <div class="texture-name">Бетон</div>
+  <div class="texture-tagline">Современно, строго, минималистично. Тренд последних лет.</div>
+  <div class="texture-image-wrapper">
+    <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/11f9860b4-b02b-4832-b9ee-7983ba8a40f5.png" alt="Бетон">
+  </div>
+  <div class="texture-desc">
+    <h3>Описание</h3>
+    <p>Гладкий серый бетон с едва заметной текстурой — идеальный фон для современного минималистичного контента. Отлично подходит для мужских блогов, портфолио, бизнес-тематики и инфографики. Сочетается с белым или жёлтым текстом.</p>
+  </div>
+  <div class="texture-uses">
+    <div class="use-item"><span class="use-icon">💼</span> Бизнес</div>
+    <div class="use-item"><span class="use-icon">🏗</span> Портфолио</div>
+    <div class="use-item"><span class="use-icon">👔</span> Мужские блоги</div>
+    <div class="use-item"><span class="use-icon">📊</span> Инфографика</div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>3 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 4: ЛЁН -->
+<div class="page texture-page">
+  <div class="texture-num">04</div>
+  <div class="page-header">
+    <div class="page-title">Текстура #4 · Нежность</div>
+    <div class="page-num">4</div>
+  </div>
+  <div class="texture-name">Лён</div>
+  <div class="texture-tagline">Мягкость, натуральность, женственность. Для нежного контента.</div>
+  <div class="texture-image-wrapper">
+    <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/1ef32aaba-26a6-48bf-8adb-c411bd5ae42e.png" alt="Лён">
+  </div>
+  <div class="texture-desc">
+    <h3>Описание</h3>
+    <p>Натуральная льняная ткань бежевого оттенка с видимой структурой плетения — создаёт ощущение ручной работы и заботы. Идеально для beauty, wellness, моды и женских блогов. Отлично сочетается с пастельными цветами и курсивными шрифтами.</p>
+  </div>
+  <div class="texture-uses">
+    <div class="use-item"><span class="use-icon">💄</span> Beauty</div>
+    <div class="use-item"><span class="use-icon">🧘</span> Wellness</div>
+    <div class="use-item"><span class="use-icon">👗</span> Мода</div>
+    <div class="use-item"><span class="use-icon"></span> Женские блоги</div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>4 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 5: ГРАДИЕНТ -->
+<div class="page texture-page">
+  <div class="texture-num">05</div>
+  <div class="page-header">
+    <div class="page-title">Текстура #5 · Универсальность</div>
+    <div class="page-num">5</div>
+  </div>
+  <div class="texture-name">Мягкий градиент</div>
+  <div class="texture-tagline">Универсальный фон для любого контента. Тренд Instagram и VK.</div>
+  <div class="texture-image-wrapper">
+    <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/136061911-6c0b-4e42-a647-332bc4a6215d.png" alt="Мягкий градиент">
+  </div>
+  <div class="texture-desc">
+    <h3>Описание</h3>
+    <p>Мягкий пастельный градиент от персикового к розовому и лавандовому — самая универсальная текстура в каталоге. Подходит для любого контента: stories, анонсов, поздравлений, акций. Если не знаете, что выбрать — берите градиент.</p>
+  </div>
+  <div class="texture-uses">
+    <div class="use-item"><span class="use-icon">📱</span> Stories</div>
+    <div class="use-item"><span class="use-icon">🎉</span> Анонсы</div>
+    <div class="use-item"><span class="use-icon">💝</span> Поздравления</div>
+    <div class="use-item"><span class="use-icon">🌈</span> Любой контент</div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>5 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 6: ПРОМТ 1 -->
+<div class="page prompts-page">
+  <div class="page-header">
+    <div class="page-title">Готовые промты</div>
+    <div class="page-num">6</div>
+  </div>
+  <div class="prompts-header">
+    <h2>3 готовых промта</h2>
+    <p>Скопируйте и используйте в любом генераторе изображений</p>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">1</div>
+    <div class="prompt-title">Мраморный фон</div>
+    <div class="prompt-box">"White marble texture with soft gray veins, high detail, 4K resolution, seamless pattern, natural stone, elegant, luxury background"</div>
+    <div class="prompt-result">
+      <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/123d7a558-35bc-4137-9690-0d66f26d4b23.png" alt="Мрамор">
+    </div>
+    <div class="prompt-uses">
+      <div class="prompt-use-tag">Экспертный контент</div>
+      <div class="prompt-use-tag">Luxury</div>
+      <div class="prompt-use-tag">Бизнес</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>6 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 7: ПРОМТЫ 2-3 -->
+<div class="page prompts-page">
+  <div class="page-header">
+    <div class="page-title">Готовые промты (продолжение)</div>
+    <div class="page-num">7</div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">2</div>
+    <div class="prompt-title">Натуральное дерево</div>
+    <div class="prompt-box">"Natural wood texture, warm tones, visible grain structure, light oak, high detail, 4K, seamless pattern, cozy, organic"</div>
+    <div class="prompt-result">
+      <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/151a731c9-22f1-496e-849b-021b20bdec81.png" alt="Дерево">
+    </div>
+    <div class="prompt-uses">
+      <div class="prompt-use-tag">Лайфстайл</div>
+      <div class="prompt-use-tag">Уют</div>
+      <div class="prompt-use-tag">Хендмейд</div>
+    </div>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-num">3</div>
+    <div class="prompt-title">Мягкий градиент</div>
+    <div class="prompt-box">"Soft gradient background, peach to pink transition, smooth color flow, pastel tones, high quality, 4K, dreamy, modern, aesthetic"</div>
+    <div class="prompt-result">
+      <img src="https://image.qwenlm.ai/public_source/43c69944-ca87-425d-8beb-d7e00f853f5c/136061911-6c0b-4e42-a647-332bc4a6215d.png" alt="Градиент">
+    </div>
+    <div class="prompt-uses">
+      <div class="prompt-use-tag">Stories</div>
+      <div class="prompt-use-tag">Анонсы</div>
+      <div class="prompt-use-tag">Универсальный</div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Демо-версия каталога · oksanaimarek-ux</span>
+    <span>7 / 8</span>
+  </div>
+</div>
+
+<!-- СТРАНИЦА 8: ФИНАЛЬНАЯ -->
+<div class="page final-page">
+  <div class="final-title">Это только <span>начало</span></div>
+  <div class="final-sub">В полном каталоге вас ждёт гораздо больше</div>
+  
+  <div class="teaser-grid">
+    <div class="teaser-item" style="background:#d4c5b0"></div>
+    <div class="teaser-item" style="background:#8b7355"></div>
+    <div class="teaser-item" style="background:#c9b896"></div>
+    <div class="teaser-item" style="background:#a89070"></div>
+    <div class="teaser-item" style="background:#e8d5c0"></div>
+    <div class="teaser-item" style="background:#6b5d4f"></div>
+    <div class="teaser-item" style="background:#f0e6d8"></div>
+    <div class="teaser-item" style="background:#9c8b7a"></div>
+  </div>
+  <div class="teaser-note">...и ещё 27 текстур в полном каталоге</div>
+  
+  <div class="categories">
+    <div class="cat-item"><span> Классика</span><span class="count">6</span></div>
+    <div class="cat-item"><span>🌿 Природа</span><span class="count">5</span></div>
+    <div class="cat-item"><span> Минимализм</span><span class="count">4</span></div>
+    <div class="cat-item"><span>🎨 Абстракция</span><span class="count">6</span></div>
+    <div class="cat-item"><span>✨ Металл</span><span class="count">4</span></div>
+    <div class="cat-item"><span>🌸 Пастель</span><span class="count">5</span></div>
+    <div class="cat-item"><span>🔥 Тёмные</span><span class="count">3</span></div>
+    <div class="cat-item"><span> Авторские</span><span class="count">2</span></div>
+  </div>
+  
+  <div class="final-stats">
+    <div class="final-stat">
+      <div class="final-stat-num">35</div>
+      <div class="final-stat-label">Текстур</div>
+    </div>
+    <div class="final-stat">
+      <div class="final-stat-num">70</div>
+      <div class="final-stat-label">Промтов</div>
+    </div>
+    <div class="final-stat">
+      <div class="final-stat-num" style="font-size:32px;">∞</div>
+      <div class="final-stat-label">Шрифтов</div>
+    </div>
+  </div>
+  
+  <div class="final-cta">
+    <div class="final-cta-text">Полный каталог — скоро!</div>
+    <div class="final-cta-sub">35 текстур · 70 промтов · Объёмные шрифты<br>Следите за постами в сообществе</div>
+  </div>
+  
+  <div class="final-note">
+    Это демо-версия. Полный каталог содержит 35 текстур, 70 промтов и коллекцию объёмных шрифтов.
+  </div>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()"> Сохранить как PDF</button>
+
+</body>
+</html>
+
